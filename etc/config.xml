@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<config
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='urn:magento:module:Magento_Store:etc/config.xsd'
+>
+    <default>
+		<df_payment>
+			<yandex_kassa>
+				<countries>RU</countries>
+				<country_restriction>whitelist</country_restriction>
+				<currency>RUB</currency>
+				<description>{store.domain} // {customer.name} // {order.id}</description>
+				<requireBillingAddress>1</requireBillingAddress>
+				<payment_action>authorize_capture</payment_action>
+				<title>Яндекс.Касса</title>
+				<title_backend>Yandex.Kassa</title_backend>
+			</yandex_kassa>
+		</df_payment>
+        <payment>
+            <dfe_yandex_kassa>
+				<model>Dfe\YandexKassa\Method</model>
+            </dfe_yandex_kassa>
+        </payment>
+    </default>
+</config>
