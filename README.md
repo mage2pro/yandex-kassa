@@ -4,7 +4,7 @@ Yandex.Kassa also works in Armenia, Azerbaijan, Belarus, Georgia, Kazakhstan, Ky
 
 ## How to buy
 The extension is not released yet, so there is no way to buy it just now.  
-The extension will be released before 2017-04-27.   
+The extension will be released before 2017-05-27.   
 
 ## How to install
 ### 1. Free installation service
