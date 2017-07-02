@@ -15,7 +15,6 @@
 			<group
 				id='yandex_kassa'
 				translate='label'
-				type='text'
 				sortOrder='2501'
 				showInDefault='1'
 				showInWebsite='1'
