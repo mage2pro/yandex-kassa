@@ -65,7 +65,7 @@
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
-					id='testPublicKey'
+					id='testMerchantID'
 					translate='label'
 					type='text'
 					sortOrder='4'
@@ -100,7 +100,7 @@
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='livePublicKey'
+					id='liveMerchantID'
 					translate='label'
 					type='text'
 					sortOrder='6'
