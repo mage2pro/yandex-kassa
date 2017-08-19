@@ -73,7 +73,7 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>Test Public Key</label>
+					<label>Test Merchant ID</label>
 					<comment><![CDATA[<a href='https://mage2.pro/c/extensions/yandex-kassa' target='_blank'>How to get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
@@ -108,7 +108,7 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>Live Public Key</label>
+					<label>Live Merchant ID</label>
 					<comment><![CDATA[]]></comment>
 					<depends>
 						<field id='enable'>1</field>
