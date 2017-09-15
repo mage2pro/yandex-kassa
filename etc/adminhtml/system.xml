@@ -90,6 +90,32 @@
 					<validate>required-entry</validate>
 				</field>
 				<field
+					dfWebhook_requireHTTPS='true'
+					dfWebhook_suffix='check'
+					id='webhookCheck'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='6'
+					translate='label'
+					type='Df\Framework\Form\Element\Webhook'
+				>
+					<label>checkUrl</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/3667' target='_blank'>Set it in your Yandex.Kassa account</a>.]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					dfWebhook_requireHTTPS='true'
+					dfWebhook_suffix='confirm'
+					id='webhookConfirm'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='7'
+					translate='label'
+					type='Df\Framework\Form\Element\Webhook'
+				>
+					<label>avisoUrl</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/3667' target='_blank'>Set it in your Yandex.Kassa account</a>.]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
 					id='requireBillingAddress'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
