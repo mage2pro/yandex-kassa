@@ -65,93 +65,29 @@
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
-					id='testMerchantID'
-					translate='label'
-					type='text'
+					id='merchantID'
+					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='4'
-					showInDefault='1'
-					showInWebsite='1'
-					showInStore='1'
-				>
-					<label>Test Merchant ID</label>
-					<comment><![CDATA[<a href='https://mage2.pro/c/extensions/yandex-kassa' target='_blank'>How to get it?</a>]]></comment>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>1</field>
-					</depends>
-					<validate>required-entry</validate>
-				</field>
-				<field
-					id='testPrivateKey'
-					translate='label'
-					type='obscure'
-					sortOrder='5'
-					showInDefault='1'
-					showInWebsite='1'
-					showInStore='1'
-				>
-					<label>Test Private Key</label>
-					<comment><![CDATA[<a href='https://mage2.pro/c/extensions/yandex-kassa' target='_blank'>How to get it?</a>]]></comment>
-					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>1</field>
-					</depends>
-					<validate>required-entry</validate>
-				</field>
-				<field
-					id='liveMerchantID'
 					translate='label'
 					type='text'
-					sortOrder='6'
-					showInDefault='1'
-					showInWebsite='1'
-					showInStore='1'
 				>
-					<label>Live Merchant ID</label>
-					<comment><![CDATA[]]></comment>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>0</field>
-					</depends>
-					<validate>required-entry</validate>
+					<label>shopId</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4495' target='_blank'>Where to find it?</a>]]></comment>
+					<depends><field id='enable'>1</field></depends>
+					<validate>required-entry validate-digits</validate>
 				</field>
 				<field
-					id='livePrivateKey'
+					id='password'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='5'
 					translate='label'
 					type='obscure'
-					sortOrder='7'
-					showInDefault='1'
-					showInWebsite='1'
-					showInStore='1'
 				>
-					<label>Live Private Key</label>
-					<comment><![CDATA[]]></comment>
+					<label>shopPassword</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4497' target='_blank'>Where to find it?</a>]]></comment>
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>0</field>
-					</depends>
-					<validate>required-entry</validate>
-				</field>
-				<field
-					id='description'
-					translate='label'
-					type='textarea'
-					sortOrder='8'
-					showInDefault='1'
-					showInWebsite='1'
-					showInStore='1'
-				>
-					<label>Description</label>
-					<comment><![CDATA[It will be displayed to you in the Yandex.Kassa merchant interface alongside the payment.
-<br/>Up to 100 characters.
-<br/>You can use <a href='https://mage2.pro/t/1834' target='_blank'>variables</a> in the description.]]></comment>
-<!-- 2016-07-01
-We do not use the `validate-length` validator here
-because the value can contain variables, so do not know the real length here. -->
-					<validate>required-entry</validate>
 					<depends><field id='enable'>1</field></depends>
+					<validate>required-entry</validate>
 				</field>
 				<field
 					id='requireBillingAddress'
