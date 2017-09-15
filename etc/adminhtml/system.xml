@@ -34,7 +34,9 @@
 				>
 					<label>Enable?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/yandex-kassa' target='_blank'>Yandex.Kassa</a>» payment extension?]]></comment>
+					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/yandex-kassa' target='_blank'>Yandex.Kassa</a>» payment extension?
+<br/>You need to <a href='https://mage2.pro/t/4518' target='_blank' title='[Yandex.Kassa] How to enable dynamic URLs for the success and error pages?'>enable dynamic URLs for the success and error pages</a>.
+]]></comment>
 				</field>
 				<field
 					id='title'
@@ -99,7 +101,7 @@
 					type='Df\Framework\Form\Element\Webhook'
 				>
 					<label>checkUrl</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/3667' target='_blank'>set it in your Yandex.Kassa account</a>]]></comment>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4515' target='_blank'>set it in your Yandex.Kassa account</a>]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
@@ -112,7 +114,7 @@
 					type='Df\Framework\Form\Element\Webhook'
 				>
 					<label>avisoUrl</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/3667' target='_blank'>set it in your Yandex.Kassa account</a>]]></comment>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4516' target='_blank'>set it in your Yandex.Kassa account</a>]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
