@@ -62,6 +62,14 @@ final class Charge extends \Df\PaypalClone\Charge {
 	protected function pCharge() {$s = $this->s(); return [
 		/**
 		 * 2017-09-16
+		 * «ID of the payment form, issued during activation of Yandex.Checkout».
+		 * «Идентификатор витрины магазина, выдается при подключении к Яндекс.Кассе».
+		 * Type: long.
+		 * [Yandex.Kassa] Where to find my «scid»? https://mage2.pro/t/4520
+		 */
+		'scid' => $s->scid()
+		/**
+		 * 2017-09-16
 		 * Note 1.
 		 * [Yandex.Kassa] What is the maximum length of «shopSuccessURL» and «shopFailURL»?
 		 * https://mage2.pro/t/4519
@@ -85,7 +93,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * 2.2.2. Смотрите комментарий 2.2.2. к параметру `shopSuccessUrl`:
 		 * https://github.com/mage2pro/yandex-kassa/blob/0.0.7/Charge.php#L126-L158
 		 */
-		'shopFailUrl' => $this->customerReturnRemote()
+		,'shopFailUrl' => $this->customerReturnRemote()
 		/**
 		 * 2017-09-16
 		 * Note 1.
