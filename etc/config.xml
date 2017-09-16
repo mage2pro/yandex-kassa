@@ -18,6 +18,8 @@ https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-htt
 				<identification_rules>
 					<max_length>64</max_length>
 				</identification_rules>
+				<optionsAllowed>AB,AC,EP,GP,KV,MA,MC,MP,PB,PC,QW,SB,WM</optionsAllowed>
+				<optionsLocation>magento</optionsLocation>
 				<requireBillingAddress>1</requireBillingAddress>
 				<payment_action>authorize_capture</payment_action>
 				<title>Яндекс.Касса</title>

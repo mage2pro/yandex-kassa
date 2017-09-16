@@ -162,6 +162,38 @@
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
+					id='optionsLimit'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='11'
+					translate='label'
+					type='Df\Framework\Form\Element\Checkbox'
+				>
+					<label>Limit the payment options availability?</label>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<comment><![CDATA[If checked, only the selected options will be shown to the customers.]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='optionsLocation'>magento</field>
+					</depends>
+				</field>
+				<field
+					id='optionsAllowed'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='12'
+					translate='label'
+					type='Df\Framework\Form\Element\Multiselect'
+				>
+					<label>Allowed Payment Options</label>
+					<source_model>Dfe\YandexKassa\Source\Option</source_model>
+					<comment><![CDATA[Only the selected options will be shown to the customers on the Magento checkout screen.]]></comment>
+					<validate>required-entry</validate>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='optionsLimit'>1</field>
+						<field id='optionsLocation'>magento</field>
+					</depends>
+				</field>
+				<field
 					id='requireBillingAddress'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
