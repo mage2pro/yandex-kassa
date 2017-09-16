@@ -14,13 +14,13 @@ namespace Dfe\YandexKassa;
  */
 final class Charge extends \Df\PaypalClone\Charge {
 	/**
-	 * 2017-09-16
+	 * 2017-09-16 «Order amount» / «Сумма заказа»
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Amount()
 	 * @used-by \Df\PaypalClone\Charge::p()
 	 * @return string
 	 */
-	protected function k_Amount() {return '';}
+	protected function k_Amount() {return 'sum';}
 
 	/**
 	 * 2017-09-16
