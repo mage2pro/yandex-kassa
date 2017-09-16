@@ -89,6 +89,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @return array(string => mixed)
 	 */
 	protected function pCharge() {$s = $this->s(); return [
+		'cps_phone' => $this->customerPhone()
 		/**
 		 * 2017-09-16
 		 * In English:
@@ -116,7 +117,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * ».
 		 * Type: normalizedString, 64 characters. 
 		 */
-		'customerNumber' => $this->customerEmail()
+		,'customerNumber' => $this->customerEmail()
 		/**
 		 * 2017-09-16
 		 * «ID of the payment form, issued during activation of Yandex.Checkout».
