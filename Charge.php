@@ -65,13 +65,15 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * 2.1.1. «The URL for the `Back to store` link on the payment error page».
 		 * «Payment solution protocol for merchants» → «Payment form» → «Form for HTTP notifications»
 		 * https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-http-docpage
-		 * 2.1.2. See the 2.1.2. comment for the `shopSuccessUrl` parameter.
+		 * 2.1.2. See the 2.1.2. comment for the `shopSuccessUrl` parameter:
+		 * https://github.com/mage2pro/yandex-kassa/blob/0.0.7/Charge.php#L92-L120
 		 *
 		 * 2.2. In Russian
 		 * 2.2.1. «URL, на который будет вести ссылка `Вернуться в магазин` со страницы ошибки платежа».
 		 * «Протокол приема платежей для магазинов» → «Платежная форма» → «Форма для HTTP-уведомлений»:
 		 * https://tech.yandex.ru/money/doc/payment-solution/payment-form/payment-form-http-docpage
-		 * 2.2.2. Смотрите комментарий 2.2.2. к параметру `shopSuccessUrl`.
+		 * 2.2.2. Смотрите комментарий 2.2.2. к параметру `shopSuccessUrl`:
+		 * https://github.com/mage2pro/yandex-kassa/blob/0.0.7/Charge.php#L126-L158
 		 */
 		'shopFailUrl' => $this->customerReturnRemote()
 		/**
