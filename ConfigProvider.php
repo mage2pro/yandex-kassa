@@ -15,6 +15,5 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider {
 		// @used-by Df_Payments/withOptions::options()
 		// https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/withOptions.js?ts=4#L55
 		'options' => $s->options()->o()
-		,'needShowOptions' => OL::MAGENTO === $s->optionsLocation()
 	] + parent::config();}
 }

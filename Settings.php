@@ -13,13 +13,6 @@ final class Settings extends \Df\Payment\Settings {
 	function options() {return $this->_options(OptionSource::class);}
 
 	/**
-	 * 2017-09-17 «Where to ask for a payment option?»
-	 * @used-by \Dfe\YandexKassa\ConfigProvider::config()
-	 * @return string
-	 */
-	function optionsLocation() {return $this->v();}
-
-	/**
 	 * 2017-09-16 «scid».
 	 * [Yandex.Kassa] Where to find my «scid»? https://mage2.pro/t/4520
 	 * @used-by @used-by \Dfe\YandexKassa\Charge::pCharge()
