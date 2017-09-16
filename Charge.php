@@ -5,6 +5,7 @@ namespace Dfe\YandexKassa;
  * The charge parameters are specified here:
  * 1) in English:
  * «Payment solution protocol for merchants» → «Payment form» → «Form for HTTP notifications»
+ * → «Form parameters»
  * https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-http-docpage
  * 2) in Russian:
  * «Протокол приема платежей для магазинов» → «Платежная форма» → «Форма для HTTP-уведомлений»:
