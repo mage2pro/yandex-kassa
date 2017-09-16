@@ -150,6 +150,18 @@
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
+					id='optionsLocation'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='10'
+					translate='label'
+					type='select'
+				>
+					<label>Where to ask for a payment option?</label>
+					<source_model>Df\PaypalClone\Source\OptionsLocation</source_model>
+					<comment><![CDATA[]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
 					id='requireBillingAddress'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
