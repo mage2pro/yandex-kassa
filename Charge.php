@@ -26,6 +26,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * 2017-09-16
 	 * «The merchant ID issued when activating Yandex.Checkout».
 	 * «Идентификатор магазина, выдается при подключении к Яндекс.Кассе».
+	 * [Yandex.Kassa] Where to find my «shopId»? https://mage2.pro/t/4495
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_MerchantId()
 	 * @used-by \Df\PaypalClone\Charge::p()

@@ -79,9 +79,21 @@
 					<validate>required-entry validate-digits</validate>
 				</field>
 				<field
-					id='password'
+					id='scid'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='5'
+					translate='label'
+					type='text'
+				>
+					<label>scid</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4520' target='_blank'>Where to find it?</a>]]></comment>
+					<depends><field id='enable'>1</field></depends>
+					<validate>required-entry validate-digits</validate>
+				</field>
+				<field
+					id='password'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='6'
 					translate='label'
 					type='obscure'
 				>
@@ -96,7 +108,7 @@
 					dfWebhook_suffix='check'
 					id='webhookCheck'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='6'
+					sortOrder='7'
 					translate='label'
 					type='Df\Framework\Form\Element\Webhook'
 				>
@@ -109,7 +121,7 @@
 					dfWebhook_suffix='confirm'
 					id='webhookConfirm'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='7'
+					sortOrder='8'
 					translate='label'
 					type='Df\Framework\Form\Element\Webhook'
 				>
