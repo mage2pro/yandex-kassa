@@ -62,12 +62,40 @@ final class Charge extends \Df\PaypalClone\Charge {
 	protected function pCharge() {$s = $this->s(); return [
 		/**
 		 * 2017-09-16
+		 * In English:
+		 * «The customer ID used by the merchant.
+		 * The ID can be the customer's contract number, username, or other.
+		 * More than one payment can be made using the same customer ID.
+		 * Allowed characters:
+		 * 		Latin letters.
+		 * 		Numbers from 0 to 9.
+		 * 		Russian letters.
+		 * 		Spaces (spaces are not allowed at the beginning and end).
+		 * 		Symbols ~!@#$%^&*()_+{}|:"<>?-=[]\;./!"№;%:?*()_+/
+		 * ».
+		 * In Russian:
+		 * «Идентификатор плательщика в системе магазина.
+		 * В качестве идентификатора может использоваться номер договора плательщика,
+		 * логин плательщика и т. п.
+		 * Допустимы повторные оплаты по одному и тому же идентификатору плательщика.
+		 * Допустимые символы:
+		 * 		буквы русского алфавита,
+		 * 		латинские буквы,
+		 * 		пробелы (пробелы в начале и в конце недопустимы).
+		 * 		символы ~!@#$%^&*()_+{}|:"<>?-=[]\;./!"№;%:?*()_+/
+		 * 		цифры от 0 до 9,
+		 * ».
+		 * Type: normalizedString, 64 characters. 
+		 */
+		'customerNumber' => $this->customerEmail()
+		/**
+		 * 2017-09-16
 		 * «ID of the payment form, issued during activation of Yandex.Checkout».
 		 * «Идентификатор витрины магазина, выдается при подключении к Яндекс.Кассе».
 		 * Type: long.
 		 * [Yandex.Kassa] Where to find my «scid»? https://mage2.pro/t/4520
 		 */
-		'scid' => $s->scid()
+		,'scid' => $s->scid()
 		/**
 		 * 2017-09-16
 		 * Note 1.
