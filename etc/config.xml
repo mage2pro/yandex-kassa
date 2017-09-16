@@ -10,6 +10,14 @@
 				<country_restriction>whitelist</country_restriction>
 				<currency>RUB</currency>
 				<description>{store.domain} // {customer.name} // {order.id}</description>
+<!-- 2017-09-16
+See the description of the `orderNumber` parameter here:
+https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-http-docpage
+«Payment solution protocol for merchants» → «Payment form» → «Form for HTTP notifications»
+-->
+				<identification_rules>
+					<max_length>64</max_length>
+				</identification_rules>
 				<requireBillingAddress>1</requireBillingAddress>
 				<payment_action>authorize_capture</payment_action>
 				<title>Яндекс.Касса</title>

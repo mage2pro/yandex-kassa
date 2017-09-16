@@ -36,12 +36,23 @@ final class Charge extends \Df\PaypalClone\Charge {
 
 	/**
 	 * 2017-09-16
+	 * In English:
+	 * «Unique order number in the merchant's system.
+	 * Yandex.Checkout ensures that this number is unique in conjunction with the shopId parameter.
+	 * If a payment with the same order number was already successfully processed,
+	 * Yandex.Checkout will decline repeat payment attempts.»
+	 * In Russian:
+	 * «Уникальный номер заказа в системе магазина.
+	 * Уникальность контролируется Яндекс.Кассой в сочетании с параметром `shopId`.
+	 * Если платеж с таким номер заказа уже был успешно проведен,
+	 * то повторные попытки оплаты будут отвергнуты Яндекс.Кассой.»
+	 * Type: normalizedString, 64 characters.
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_RequestId()
 	 * @used-by \Df\PaypalClone\Charge::p()
 	 * @return string
 	 */
-	protected function k_RequestId() {return '';}
+	protected function k_RequestId() {return 'orderNumber';}
 
 	/**
 	 * 2017-09-16
