@@ -26,6 +26,22 @@ final class Charge extends \Df\PaypalClone\Charge {
 
 	/**
 	 * 2017-09-16
+	 * «Payer's email address.
+	 * If passed, the corresponding box on the payment confirmation page will be pre-filled
+	 * (step 3 in the payment process).»
+	 * «Адрес электронной почты плательщика.
+	 * Если он передан, то соответствующее поле на странице подтверждения платежа будет предзаполнено
+	 * (шаг 3 на схеме платежа).
+	 * Допустимо передавать только адрес электронной почты (проверяется соответствие).»
+	 * @override
+	 * @see \Df\PaypalClone\Charge::k_Email()
+	 * @used-by \Df\PaypalClone\Charge::p()
+	 * @return string
+	 */
+	protected function k_Email() {return 'cps_email';}
+
+	/**
+	 * 2017-09-16
 	 * «The merchant ID issued when activating Yandex.Checkout».
 	 * «Идентификатор магазина, выдается при подключении к Яндекс.Кассе».
 	 * [Yandex.Kassa] Where to find my «shopId»? https://mage2.pro/t/4495
