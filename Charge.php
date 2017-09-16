@@ -134,6 +134,29 @@ final class Charge extends \Df\PaypalClone\Charge {
 		,'customerNumber' => $this->customerEmail()
 		/**
 		 * 2017-09-16
+		 * In English:
+		 * «The payment method.
+		 * We recommend passing an empty value in this field
+		 * so that the payment method will be selected in Yandex.Checkout.
+		 * Examples:
+		 * 		PC - Payment from a Yandex.Money Wallet.
+		 * 		AC - Payment from any bank card.
+		 * Full list of values: https://tech.yandex.com/money/doc/payment-solution/reference/payment-type-codes-docpage
+		 * ».
+		 * In Russian:
+		 * «Способ оплаты.
+		 * Рекомендуем передавать в этом поле пустое значение,
+		 * в этом случае выбор способа оплаты будет происходить на стороне Яндекс.Кассы.
+		 * Примеры:
+		 * 		PC - оплата из кошелька в Яндекс.Деньгах;
+		 * 		AC - оплата с произвольной банковской карты.
+		 * Полный список значений: https://tech.yandex.ru/money/doc/payment-solution/reference/payment-type-codes-docpage
+		 * ».
+		 * Type: normalizedString, 5 characters.
+		 */
+		,'paymentType' => ''
+		/**
+		 * 2017-09-16
 		 * «ID of the payment form, issued during activation of Yandex.Checkout».
 		 * «Идентификатор витрины магазина, выдается при подключении к Яндекс.Кассе».
 		 * Type: long.
