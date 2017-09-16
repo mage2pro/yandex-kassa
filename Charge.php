@@ -89,7 +89,21 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @return array(string => mixed)
 	 */
 	protected function pCharge() {$s = $this->s(); return [
-		'cps_phone' => $this->customerPhone()
+		/**
+		 * 2017-09-16
+		 * Note 1.
+		 * In English:
+		 * «Payer's mobile phone number.
+		 * If passed, the corresponding box on the payment confirmation page will be pre-filled
+		 * (step 3 in the payment process).».
+		 * In Russian:
+		 * «Номер мобильного телефона плательщика.
+		 * Если он передан, то соответствующее поле на странице подтверждения платежа будет предзаполнено
+		 * (шаг 3 на схеме платежа).».
+		 * Type: string, 15 characters, digits only.
+		 * Note 2. A regex test: https://3v4l.org/eG04b
+		 */
+		'cps_phone' => preg_replace("#\D#", '', $this->customerPhone())
 		/**
 		 * 2017-09-16
 		 * In English:
