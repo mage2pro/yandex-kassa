@@ -1,7 +1,10 @@
 <?php
 namespace Dfe\YandexKassa\Source;
-// 2017-09-16
-/** @method static Option s() */
+/**
+ * 2017-09-16
+ * @method static Option s()
+ * @used-by \Dfe\YandexKassa\Settings::options()
+ */
 final class Option extends \Df\Config\Source {
 	/**
 	 * @override
