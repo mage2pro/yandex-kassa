@@ -2,6 +2,13 @@
 namespace Dfe\YandexKassa;
 /**
  * 2017-09-16
+ * The charge parameters are specified here:
+ * 1) in English:
+ * «Payment solution protocol for merchants» → «Payment form» → «Form for HTTP notifications»
+ * https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-http-docpage
+ * 2) in Russian:
+ * «Протокол приема платежей для магазинов» → «Платежная форма» → «Форма для HTTP-уведомлений»:
+ * https://tech.yandex.ru/money/doc/payment-solution/payment-form/payment-form-http-docpage
  * @method Method m()
  * @method Settings s()
  */
@@ -17,12 +24,14 @@ final class Charge extends \Df\PaypalClone\Charge {
 
 	/**
 	 * 2017-09-16
+	 * «The merchant ID issued when activating Yandex.Checkout».
+	 * «Идентификатор магазина, выдается при подключении к Яндекс.Кассе».
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_MerchantId()
 	 * @used-by \Df\PaypalClone\Charge::p()
 	 * @return string
 	 */
-	protected function k_MerchantId() {return '';}
+	protected function k_MerchantId() {return 'shopId';}
 
 	/**
 	 * 2017-09-16
