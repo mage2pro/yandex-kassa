@@ -13,7 +13,7 @@
 <!-- 2017-09-16
 See the description of the `orderNumber` parameter here:
 https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-http-docpage
-«Payment solution protocol for merchants» → «Payment form» → «Form for HTTP notifications»
+«Payment solution protocol for merchants» → «Payment form» → «Form for HTTP notifications» → «Form parameters»
 -->
 				<identification_rules>
 					<max_length>64</max_length>
