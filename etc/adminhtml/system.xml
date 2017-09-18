@@ -162,9 +162,23 @@
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
-					id='optionsLimit'
+					id='optionsDescription'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='11'
+					translate='label'
+					type='textarea'
+				>
+					<label>A text above the options</label>
+					<comment><![CDATA[You can use HTML tags. Also you set it empty.]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='optionsLocation'>magento</field>
+					</depends>
+				</field>
+				<field
+					id='optionsLimit'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='12'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -179,7 +193,7 @@
 				<field
 					id='optionsAllowed'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='12'
+					sortOrder='13'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>

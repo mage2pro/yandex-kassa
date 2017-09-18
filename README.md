@@ -4,7 +4,7 @@ Yandex.Kassa also works in Armenia, Azerbaijan, Belarus, Georgia, Kazakhstan, Ky
 
 ## Screenshots
 ### Backend settings
-![](https://mage2.pro/uploads/default/original/2X/5/5b58e055c08d841218e3ecd95d584998e4c0f05c.png)
+![](https://mage2.pro/uploads/default/original/2X/3/39849f4467d25f40428084825907dbec33760fd3.png)
 
 ## How to buy
 The extension is not released yet, so there is no way to buy it just now.  
