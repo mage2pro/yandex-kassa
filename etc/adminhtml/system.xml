@@ -162,14 +162,14 @@
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
-					id='optionsDescription'
+					id='optionsPrompt'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='11'
 					translate='label'
 					type='textarea'
 				>
-					<label>A text above the options</label>
-					<comment><![CDATA[You can use HTML tags. Also you set it empty.]]></comment>
+					<label>Options Prompt</label>
+					<comment><![CDATA[A text above the Yandex.Kassa payment options on the Magento checkout page.<br/>You can use the HTML tags. Also you set the desciption empty to hide it.]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='optionsLocation'>magento</field>

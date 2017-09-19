@@ -1,8 +1,18 @@
 <?php
 namespace Dfe\YandexKassa;
-use Df\Payment\Settings\Options as O;
+use Df\Payment\ConfigProvider\IOptions;
 // 2017-09-17
-final class ConfigProvider extends \Df\Payment\ConfigProvider {
+/** @method Settings s() */
+final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOptions {
+	/**
+	 * 2017-09-18
+	 * @override
+	 * @see \Df\Payment\ConfigProvider\IOptions::options()
+	 * @used-by \Df\Payment\ConfigProvider::configOptions()
+	 * @return array(<value> => <label>)
+	 */
+	function options() {return $this->s()->options()->o(true);}
+
 	/**
 	 * 2017-09-17
 	 * @override
@@ -10,15 +20,7 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider {
 	 * @used-by \Df\Payment\ConfigProvider::getConfig()
 	 * @return array(string => mixed)
 	 */
-	protected function config() {
-		$s = $this->s(); /** @var Settings $s */
-		$o = $s->options();	/** @var O $o */
-		return [
-			'needShowOptions' => $o->needShow()
-			// 2017-09-17
-			// @used-by Df_Payments/withOptions::options()
-			// https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/withOptions.js?ts=4#L55
-			,'options' => $o->o(true)
-		] + parent::config();
-	}
+	protected function config() {return self::configOptions($this) + parent::config() + [
+		'needShowOptions' => $this->s()->options()->needShow()
+	];}
 }
