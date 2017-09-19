@@ -20,7 +20,5 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOption
 	 * @used-by \Df\Payment\ConfigProvider::getConfig()
 	 * @return array(string => mixed)
 	 */
-	protected function config() {return self::configOptions($this) + parent::config() + [
-		'needShowOptions' => $this->s()->options()->needShow()
-	];}
+	protected function config() {return self::configOptions($this) + parent::config();}
 }

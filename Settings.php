@@ -7,7 +7,7 @@ use Dfe\YandexKassa\Source\Option as OptionSource;
 final class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-09-17
-	 * @used-by \Dfe\YandexKassa\ConfigProvider::config()
+	 * @used-by \Dfe\YandexKassa\ConfigProvider::options()
 	 * @return O
 	 */
 	function options() {return $this->_options(OptionSource::class);}

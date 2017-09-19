@@ -169,16 +169,37 @@
 					type='textarea'
 				>
 					<label>Options Prompt</label>
-					<comment><![CDATA[A text above the Yandex.Kassa payment options on the Magento checkout page.<br/>You can use the HTML tags. Also you set the desciption empty to hide it.]]></comment>
+					<comment><![CDATA[A text above the Yandex.Kassa payment options on the Magento checkout page.<br/>You can use the HTML tags. Also you set the prompt empty to hide it.]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='optionsLocation'>magento</field>
 					</depends>
 				</field>
 				<field
-					id='optionsLimit'
+					dfRows='3'
+					id='optionsDescription'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='12'
+					translate='label'
+					type='Df\Framework\Form\Element\Textarea'
+				>
+					<label>Options Description</label>
+					<comment><![CDATA[A text to be shown on the Magento checkout page instead of the payment options dialog (as you have chosen to show the payment options on the Yandex.Kassa side, the options dialog will not be shown on the Magento checkout screen).
+<br/>You can:
+<ul class='df-note'>
+<li>Use the HTML tags.</li>
+<li>Use the <code>{options}</code> variable. It will be substituted with the available payment options.</li>
+<li>Set the description empty to hide it.</li>
+</ul>]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='optionsLocation'>psp</field>
+					</depends>
+				</field>
+				<field
+					id='optionsLimit'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='13'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -193,7 +214,7 @@
 				<field
 					id='optionsAllowed'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='13'
+					sortOrder='14'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
