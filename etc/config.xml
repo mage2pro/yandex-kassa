@@ -21,7 +21,7 @@ https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-htt
 				<optionsAllowed>AB,AC,EP,GP,KV,MA,MC,MP,PB,PC,QW,SB,WM</optionsAllowed>
 				<optionsDescription><![CDATA[После нажатия кнопки «<b>Оплатить</b>» Вы будете перенаправлены на платёжную страницу Яндекс.Кассы, где Вам будут доступны следующие способы оплаты: {options}.]]></optionsDescription>
 				<optionsLocation>magento</optionsLocation>
-				<optionsPrompt><![CDATA[Пожалуйста, выберите способ оплаты и нажмите внизу кнопку «<b>Оплатить</b>»]]></optionsPrompt>
+				<optionsPrompt><![CDATA[Выберите способ оплаты и нажмите внизу кнопку «<b>Оплатить</b>»:]]></optionsPrompt>
 				<requireBillingAddress>0</requireBillingAddress>
 				<payment_action>authorize_capture</payment_action>
 				<title>Яндекс.Касса</title>

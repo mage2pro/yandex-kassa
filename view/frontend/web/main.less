@@ -1,0 +1,17 @@
+// 2017-09-21
+// I show the payment options in 2 columns,
+// and these columns look better while their composite width is limited by 40em.
+.payment-method.dfe_yandex_kassa {max-width: 40em;}
+// 2017-09-21 [Yandex.Kassa] The payment options: https://mage2.pro/t/4494
+form.dfe_yandex_kassa {
+	@media (min-width: 570px) {
+		ul.df-options {
+			-moz-column-count: 2;
+			-webkit-column-count: 2;
+			column-count: 2;
+			-moz-column-gap: 2em;
+			-webkit-column-gap: 2em;
+			column-gap: 2em;
+		}
+	}
+}
