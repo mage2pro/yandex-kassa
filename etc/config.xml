@@ -20,6 +20,7 @@ https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-htt
 				</identification_rules>
 				<optionsAllowed>AB,AC,EP,GP,KV,MA,MC,MP,PB,PC,QW,SB,WM</optionsAllowed>
 				<optionsDescription><![CDATA[После нажатия кнопки «<b>Оплатить</b>» Вы будете перенаправлены на платёжную страницу Яндекс.Кассы, где Вам будут доступны следующие способы оплаты: {options}.]]></optionsDescription>
+				<optionsDisplayMode>images</optionsDisplayMode>
 				<optionsLocation>magento</optionsLocation>
 				<optionsPrompt><![CDATA[Выберите способ оплаты и нажмите внизу кнопку «<b>Оплатить</b>»:]]></optionsPrompt>
 				<requireBillingAddress>0</requireBillingAddress>

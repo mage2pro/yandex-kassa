@@ -176,10 +176,25 @@
 					</depends>
 				</field>
 				<field
+					id='optionsDisplayMode'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='12'
+					translate='label'
+					type='select'
+				>
+					<label>The payment options display mode</label>
+					<comment><![CDATA[]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='optionsLocation'>magento</field>
+					</depends>
+					<source_model>Df\Payment\Source\Options\DisplayMode</source_model>
+				</field>
+				<field
 					dfRows='3'
 					id='optionsDescription'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='12'
+					sortOrder='13'
 					translate='label'
 					type='Df\Framework\Form\Element\Textarea'
 				>
@@ -199,7 +214,7 @@
 				<field
 					id='optionsLimit'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='13'
+					sortOrder='14'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -214,7 +229,7 @@
 				<field
 					id='optionsAllowed'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='14'
+					sortOrder='15'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
