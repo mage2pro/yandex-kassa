@@ -59,5 +59,11 @@
 		,"Латвия"
 		,"Молдова"
 		,"Таджикистан"
+
+		,"Bank Cards", "Visa", "MasterCard", "Maestro", "Mir"
+		,"E-Money", "Yandex.Money", "WebMoney", "QIWI"
+		,"Online Banking", "Sberbank", "Alfa-Bank", "Promsvyazbank"
+		,"ЕРИП", "Instant Loans", "КупиВкредит", "Tinkoff Bank"
+		,"Direct Carrier Billing", "Beeline", "MegaFon", "MTS", "Tele2", "Cash"
 	]
 }
