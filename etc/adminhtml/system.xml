@@ -182,7 +182,7 @@
 					translate='label'
 					type='select'
 				>
-					<label>The payment options display mode</label>
+					<label>Payment options display mode</label>
 					<comment><![CDATA[]]></comment>
 					<depends>
 						<field id='enable'>1</field>
