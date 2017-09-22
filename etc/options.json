@@ -6,7 +6,6 @@
 	,"KV": {"canRefund": true, "lifetime": null, "title": {"en": "KupiVkredit", "ru": "КупиВкредит"}}
 	,"MA": {"canRefund": true, "lifetime": null, "title": {"en": "MasterPass", "ru": "MasterPass"}}
 	,"MC": {"canRefund": false, "lifetime": null, "title": {"en": "Phone account balance", "ru": "Баланс телефона"}}
-	,"MP": {"canRefund": true, "lifetime": null, "title": {"en": "Mobile terminal (mPOS)", "ru": "Мобильный терминал (mPOS)"}}
 	,"PB": {"canRefund": false, "lifetime": "24h", "title": {"en": "Promsvyazbank online banking", "ru": "Интернет-банк Промсвязьбанка"}}
 	,"PC": {"canRefund": true, "lifetime": "1h", "title": {"en": "Yandex.Money", "ru": "Яндекс.Деньги"}}
 	,"QW": {"canRefund": true, "lifetime": null, "title": {"en": "QIWI Wallet", "ru": "QIWI Wallet"}}

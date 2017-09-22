@@ -14,4 +14,67 @@ form.dfe_yandex_kassa {
 			column-gap: 2em;
 		}
 	}
+	// 2017-09-22
+	// Note 1. This style is set when the «Payment options display mode» option has the «images» value.
+	// @see Df_Payment/withOptions::containerCss():
+	//		'withOptions-displayMode-' + this.config('optionsDisplayMode')
+	// Note 2. [Yandex.Kassa] The payment options: https://mage2.pro/t/4494
+	.withOptions-displayMode-images & {
+		.df-choice label {display: inline-block; color: transparent;}
+		// 2017-09-22 Альфа-Банк
+		.df-option-AB label {background: url('./i/alfabank.png'); width: 169px; height: 50px;}
+		// 2017-09-22 Банковская карта
+		.df-option-AC label {
+			background: url('./i/bank-card.png') center no-repeat;
+			width: 200px; height: 39px; padding: 5px 0 6px 0;
+		}
+		// 2017-09-22 Наличные
+		.df-option-GP label {background: url('./i/cash.png'); width: 47px; height: 50px;}
+		// 2017-09-22
+		// ЕРИП (raschet.by, Беларусь)
+		// I have found the logo here: https://raschet.by/o-sisteme/o-sisteme
+		// See the «Материалы для скачивания» section.
+		.df-option-EP label {background: url('./i/raschet.by.png') center no-repeat; width: 75px; height: 50px;  }
+		// 2017-09-22
+		// КупиВкредит
+		// The logo sources:
+		// 1) In the EPS format:
+		// 2) In the PNG format: https://www.kupivkredit.ru/join
+		// See the «Логотипы, кнопки, баннеры и доп. материалы» section.
+		.df-option-KV label {
+			background: url('./i/kupivkredit.ru.png') center no-repeat;
+			width: 194px; height: 48px; padding: 1px 0;
+		}
+		// 2017-09-22
+		// MasterPass. I have found the logo here: https://developer.mastercard.com/page/masterpass-digital-assets
+		.df-option-MA label {
+			background:
+				url('https://static.masterpass.com/dyn/img/btn/global/mp_chk_btn_180x042px.svg')
+				center no-repeat
+			;
+			width: 180px; height: 42px; padding: 4px 0;
+		}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+		// 2017-09-22 STUB
+		.df-option-STUB label {}
+	}
 }
