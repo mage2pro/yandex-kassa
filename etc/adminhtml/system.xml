@@ -183,7 +183,7 @@
 					type='select'
 				>
 					<label>Payment options display mode</label>
-					<comment><![CDATA[]]></comment>
+					<comment><![CDATA[See the screenshots:<ul class='df-note'><li><a href='https://mage2.pro/t/4562' target='_blank'>the «<b>images</b>» mode</a></li><li><a href='https://mage2.pro/t/4559' target='_blank'>the «<b>text</b>» mode</a></li></ul>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='optionsLocation'>magento</field>

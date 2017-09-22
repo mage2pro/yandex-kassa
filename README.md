@@ -4,6 +4,7 @@ Yandex.Kassa also works in Armenia, Azerbaijan, Belarus, Georgia, Kazakhstan, Ky
 
 ## [Screenshots](https://mage2.pro/tags/yandex-kassa-screenshots)
 - The frontend checkout screen:
+    - [in the «**images**» mode](https://mage2.pro/t/topic/4562)
     - [in the «**text**» mode](https://mage2.pro/t/topic/4559)
 - [The backend settings](https://mage2.pro/t/topic/4498)
 
