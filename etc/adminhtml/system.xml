@@ -105,28 +105,14 @@
 				</field>
 				<field
 					dfWebhook_requireHTTPS='true'
-					dfWebhook_suffix='check'
 					id='webhookCheck'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='7'
 					translate='label'
 					type='Df\Framework\Form\Element\Webhook'
 				>
-					<label>checkUrl</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4515' target='_blank'>set it in your Yandex.Kassa account</a>]]></comment>
-					<depends><field id='enable'>1</field></depends>
-				</field>
-				<field
-					dfWebhook_requireHTTPS='true'
-					dfWebhook_suffix='confirm'
-					id='webhookConfirm'
-					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='8'
-					translate='label'
-					type='Df\Framework\Form\Element\Webhook'
-				>
-					<label>avisoUrl</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4516' target='_blank'>set it in your Yandex.Kassa account</a>]]></comment>
+					<label>checkUrl / avisoUrl</label>
+					<comment><![CDATA[Set this value to the both <a href='https://mage2.pro/t/4516' target='_blank'>«<b>checkUrl</b>» and «<b>avisoUrl</b>»</a> fields in your Yandex.Kassa account</a>]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
