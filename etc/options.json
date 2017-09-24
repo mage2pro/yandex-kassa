@@ -1,12 +1,24 @@
 {
 	"AB": {"canRefund": true, "lifetime": "7d", "title": {"en": "Alfa-Click", "ru": "Альфа-Клик"}}
 	,"AC": {"canRefund": true, "lifetime": "1h", "title": {"en": "Bank card", "ru": "Банковская карта"}}
-	,"EP": {"canRefund": false, "lifetime": "unlimited", "title": {"en": "ERIP (Belarus)", "ru": "ЕРИП (Беларусь)"}}
+	,"EP": {"canRefund": false, "lifetime": "unlimited", "title": {
+		"en": "ERIP (Belarus)", "ru": "ЕРИП (Беларусь)"
+	}}
 	,"GP": {"canRefund": false, "lifetime": "unlimited", "title": {"en": "Cash", "ru": "Наличные"}}
 	,"KV": {"canRefund": true, "lifetime": null, "title": {"en": "KupiVkredit", "ru": "КупиВкредит"}}
 	,"MA": {"canRefund": true, "lifetime": null, "title": {"en": "MasterPass", "ru": "MasterPass"}}
-	,"MC": {"canRefund": false, "lifetime": null, "title": {"en": "Phone account balance", "ru": "Баланс телефона"}}
-	,"PB": {"canRefund": false, "lifetime": "24h", "title": {"en": "Promsvyazbank online banking", "ru": "Интернет-банк Промсвязьбанка"}}
+	,"MC": {"canRefund": false, "lifetime": null, "title": {
+		"en": "Phone account balance", "ru": "Баланс телефона"
+	}}
+	,"OP": {
+		"canRefund": false
+		,"hideOnCheckout": true
+		,"lifetime": "unlimited"
+		,"title": {"en": "Cash (outside of the Russian Federation)", "ru": "Наличные из-за рубежа"}
+	}
+	,"PB": {"canRefund": false, "lifetime": "24h", "title": {
+		"en": "Promsvyazbank online banking", "ru": "Интернет-банк Промсвязьбанка"}
+	}
 	,"PC": {"canRefund": true, "lifetime": "1h", "title": {"en": "Yandex.Money", "ru": "Яндекс.Деньги"}}
 	,"QW": {"canRefund": true, "lifetime": null, "title": {"en": "QIWI Wallet", "ru": "QIWI Wallet"}}
 	,"SB": {"canRefund": false, "lifetime": "24h", "title": {"en": "Sberbank Online", "ru": "Сбербанк Онлайн"}}
