@@ -3,6 +3,24 @@ namespace Dfe\YandexKassa;
 // 2017-09-17
 final class Method extends \Df\PaypalClone\Method {
 	/**
+	 * 2017-09-17
+	 * The «sum» parameter has the «CurrencyAmount»:
+	 * https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-http-docpage
+	 * https://tech.yandex.ru/money/doc/payment-solution/payment-form/payment-form-http-docpage
+	 * The «CurrencyAmount» type description:
+	 * In English: «Amount. Fixed-point decimal number with 2-digit precision.»
+	 * https://tech.yandex.com/money/doc/payment-solution/reference/datatypes-docpage
+	 * In Russian: «Сумма. Число с фиксированной точкой, две цифры после точки.»
+	 * https://tech.yandex.ru/money/doc/payment-solution/reference/datatypes-docpage
+	 * @override
+	 * @see \Df\Payment\Method::amountFormat()
+	 * @used-by \Df\Payment\Operation::amountFormat()
+	 * @param float|int $a
+	 * @return string
+	 */
+	function amountFormat($a) {return df_f2($a);}
+
+	/**
 	 * 2017-09-24
 	 * @used-by \Dfe\YandexKassa\Charge::pCharge()
 	 * @return string|null
