@@ -154,7 +154,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * ».
 		 * Type: normalizedString, 5 characters.
 		 */
-		,'paymentType' => ''
+		,'paymentType' => $this->m()->option()
 		/**
 		 * 2017-09-16
 		 * «ID of the payment form, issued during activation of Yandex.Checkout».
