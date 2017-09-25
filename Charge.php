@@ -73,13 +73,16 @@ final class Charge extends \Df\PaypalClone\Charge {
 	protected function k_RequestId() {return 'orderNumber';}
 
 	/**
-	 * 2017-09-16
+	 * 2017-09-25
+	 * The Yandex.Kassa charge requests do not use a signature:
+	 * @see \Dfe\YandexKassa\Charge::k_Signature()
+	 * https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-http-docpage
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Signature()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
+	 * @return null
 	 */
-	protected function k_Signature() {return '';}
+	protected function k_Signature() {return null;}
 
 	/**
 	 * 2017-09-16
