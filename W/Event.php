@@ -134,31 +134,35 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  */
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
-	 * 2017-09-24
+	 * 2017-09-25
+	 * «Unique transaction number in Yandex.Checkout» / «Уникальный номер транзакции в Яндекс.Кассе»
+	 * Type: long.
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_idE()
 	 * @used-by \Df\PaypalClone\W\Event::idE()
 	 * @return string
 	 */
-	protected function k_idE() {return null;}
+	protected function k_idE() {return 'invoiceId';}
 
 	/**
-	 * 2017-09-24
+	 * 2017-09-25 «The order number in the merchant's system» / «Номер заказа в системе магазина»
+	 * Type: normalizedString, maximum 64 characters.
 	 * @override
 	 * @see \Df\Payment\W\Event::k_pid()
 	 * @used-by \Df\Payment\W\Event::pid()
 	 * @return string
 	 */
-	protected function k_pid() {return '';}
+	protected function k_pid() {return 'orderNumber';}
 
 	/**
-	 * 2017-09-24
+	 * 2017-09-25 «MD5 hash of the payment form parameters» / «MD5-хэш параметров платежной формы»
+	 * Type: normalizedString, exactly 32 uppercase hexadecimal characters.
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_signature()
 	 * @used-by \Df\PaypalClone\W\Event::signatureProvided()
 	 * @return string
 	 */
-	protected function k_signature() {return '';}
+	protected function k_signature() {return 'md5';}
 
 	/**
 	 * 2017-09-24
