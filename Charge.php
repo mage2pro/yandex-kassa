@@ -1,5 +1,6 @@
 <?php
 namespace Dfe\YandexKassa;
+use Dfe\YandexKassa\Source\Option;
 /**
  * 2017-09-16
  * The charge parameters are specified here:
@@ -91,7 +92,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by \Df\PaypalClone\Charge::p()
 	 * @return array(string => mixed)
 	 */
-	protected function pCharge() {$s = $this->s(); return [
+	protected function pCharge() {$s = $this->s(); $o = $this->m()->option(); return [
 		/**
 		 * 2017-09-16
 		 * Note 1.
@@ -157,7 +158,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * ».
 		 * Type: normalizedString, 5 characters.
 		 */
-		,'paymentType' => $this->m()->option()
+		,'paymentType' => $o
 		/**
 		 * 2017-09-16
 		 * «ID of the payment form, issued during activation of Yandex.Checkout».
@@ -304,5 +305,21 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * https://tech.yandex.ru/money/doc/payment-solution/payment-form/payment-form-http-docpage
 		 */
 		,'shopSuccessUrl'
-	], $this->customerReturnRemote());}
+	], $this->customerReturnRemote())
+	+ ($o && Option::LOAN !== $o ? [] : [
+		/**
+		 * 2017-09-25 «Provide the 1 year only loan term?»
+		 * In English:
+		 * «If this parameter is set to true, the bank is passed a fixed loan term of 12 months.
+		 * This is necessary for displaying the monthly loan repayment next to the product price.
+		 * For example, "Refrigerator for 3000 rubles a month".
+		 * This makes the monthly payment equal to 10% of the price.»
+		 * In Russian:
+		 * «Если этот параметр равен true, в банк передается фиксированный срок кредита — 12 месяцев.
+		 * Это нужно для отображения ежемесячного платежа по кредиту рядом со стоимостью товара.
+		 * Например: «Холодильник за 3000 рублей в месяц».
+		 * Ежемесячный платеж в таком случае равен 10% от стоимости.»
+		 */
+		'fixed_term' => $s->b('provide1YearOnlyLoanTerm')
+	]);}
 }

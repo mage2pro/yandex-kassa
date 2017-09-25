@@ -34,4 +34,10 @@ final class Option extends \Df\Config\Source {
 			dfa($a, 'hideOnCheckout')
 		);})
 	));}
+
+	/**
+	 * 2017-09-25
+	 * @used-by \Dfe\YandexKassa\Charge::pCharge()
+	 */
+	const LOAN = 'KV';
 }

@@ -231,10 +231,29 @@
 					</depends>
 				</field>
 				<field
-					id='requireBillingAddress'
+					id='provide1YearOnlyLoanTerm'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 					sortOrder='16'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Provide the 1 year only loan term?</label>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<comment><![CDATA[
+This option is used only for <a href='https://tech.yandex.com/money/doc/payment-solution/payment-process/payments-credit-docpage/' target='_blank' title='«Description of the payment process» → «Payment by credit»'>instant loans</a> (<a href='https://www.kupivkredit.ru' target='_blank'>KupiVkredit</a> - Tinkoff Bank).
+<br/>If it is <b>checked</b>, then the bank is passed a fixed loan term of 12 months.
+<br/>This is necessary for displaying the monthly loan repayment next to the product price.
+<br/>For example, «Refrigerator for 3000 rubles a month».
+<br/>This makes the <b>monthly</b> payment equal to <b>10%</b> of the price.]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='requireBillingAddress'
+					translate='label'
+					type='Df\Framework\Form\Element\Checkbox'
+					sortOrder='26'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -248,7 +267,7 @@
 					id='min_order_total'
 					translate='label'
 					type='text'
-					sortOrder='19'
+					sortOrder='27'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -262,7 +281,7 @@
 					id='max_order_total'
 					translate='label'
 					type='text'
-					sortOrder='20'
+					sortOrder='28'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -276,7 +295,7 @@
 					id='country_restriction'
 					translate='label'
 					type='select'
-					sortOrder='21'
+					sortOrder='29'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -289,7 +308,7 @@
 					id='countries'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
-					sortOrder='22'
+					sortOrder='30'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
