@@ -91,7 +91,7 @@
 					<validate>required-entry validate-digits</validate>
 				</field>
 				<field
-					id='password'
+					id='privateKey'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='6'
 					translate='label'
