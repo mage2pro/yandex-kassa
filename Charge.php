@@ -1,6 +1,7 @@
 <?php
 namespace Dfe\YandexKassa;
 use Dfe\YandexKassa\Source\Option;
+use Magento\Sales\Model\Order\Item as OI;
 /**
  * 2017-09-16
  * The charge parameters are specified here:
@@ -306,7 +307,27 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 */
 		,'shopSuccessUrl'
 	], $this->customerReturnRemote())
-	+ ($o && Option::LOAN !== $o ? [] : [
+	+ ($o && Option::LOAN !== $o ? [] : $this->pLoan());}
+
+	/**
+	 * 2017-09-25
+	 * @used-by pCharge()
+	 * @return array(string => mixed)
+	 */
+	private function pLoan() {return
+		dfa_flatten(df_map_k(
+			function($i, array $a) {return dfa_key_transform($a, function($k) use($i) {return "{$k}_{$i}";});}
+			,$this->oiLeafs(function(OI $i) {return [
+				// 2017-09-25 «Price per product unit» / «Стоимость единицы товара». Optional, CurrencyAmount.
+				'goods_cost' => $this->amountFormat(df_oqi_price($i, true))
+				// 2017-09-25 «Product description» / «Описание товара». Optional, String(255).
+				,'goods_description' => df_oqi_desc($i, 255)
+				// 2017-09-25 «Название товара» / «Product name». Optional, String(255).
+				,'goods_name' => $i->getName()
+				// 2017-09-25 «Number of units of the product» / «Количество единиц товара». Optional, Int.
+				,'goods_quantity' => df_oqi_qty($i)
+			];})
+		))
 		/**
 		 * 2017-09-25 «Provide the 1 year only loan term?»
 		 * In English:
@@ -320,6 +341,6 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * Например: «Холодильник за 3000 рублей в месяц».
 		 * Ежемесячный платеж в таком случае равен 10% от стоимости.»
 		 */
-		'fixed_term' => $s->b('provide1YearOnlyLoanTerm')
-	]);}
+		+ ['fixed_term' => $this->s()->b('provide1YearOnlyLoanTerm')]
+	;}
 }

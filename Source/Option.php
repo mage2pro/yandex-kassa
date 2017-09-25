@@ -2,6 +2,11 @@
 namespace Dfe\YandexKassa\Source;
 /**
  * 2017-09-16
+ * 2017-09-25
+ * [Yandex.Kassa] The payment options: https://mage2.pro/t/4494
+ * https://tech.yandex.com/money/doc/payment-solution/reference/payment-type-codes-docpage
+ * https://tech.yandex.ru/money/doc/payment-solution/reference/payment-type-codes-docpage
+ * 
  * @method static Option s()
  * @used-by \Dfe\YandexKassa\Settings::options()
  */
@@ -37,6 +42,8 @@ final class Option extends \Df\Config\Source {
 
 	/**
 	 * 2017-09-25
+	 * «В Яндекс.Кассе появилось POS-кредитование от Тинькофф Банка»:
+	 * https://roem.ru/24-09-2015/207831/yandex-kassa-credit
 	 * @used-by \Dfe\YandexKassa\Charge::pCharge()
 	 */
 	const LOAN = 'KV';
