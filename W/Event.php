@@ -3,15 +3,50 @@ namespace Dfe\YandexKassa\W;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
 /**
  * 2017-09-24
- * Description of the payment process:
+ * 1) Description of the payment process:
+ * 1.1) In English:
+ * 1.1.1) Real-time payments:
  * https://tech.yandex.com/money/doc/payment-solution/payment-process/payment-process-intro-docpage
+ * 1.1.2) Cash payment via payment kiosks:
+ * https://tech.yandex.com/money/doc/payment-solution/payment-process/payments-cash-docpage
+ * 1.1.3) Payment via external payment systems:
+ * https://tech.yandex.com/money/doc/payment-solution/payment-process/payments-invoicing-docpage
+ * 1.1.4) Payment by credit:
+ * https://tech.yandex.com/money/doc/payment-solution/payment-process/payments-credit-docpage
+ * 1.1.5) Payment from an account in an SMS message:
+ * https://tech.yandex.com/money/doc/payment-solution/payment-process/sms-payments-docpage
+ * 1.1.6) Payment via Sberbank's mobile app:
+ * https://tech.yandex.com/money/doc/payment-solution/payment-process/sbol-payments-docpage
+ * 1.1.7) Deferred payment:
+ * https://tech.yandex.com/money/doc/payment-solution/payment-process/payments-hold-docpage
+ * 1.1.8) Payment via mobile terminal:
+ * https://tech.yandex.com/money/doc/payment-solution/payment-process/payments-mpos-docpage
+ * 1.1.9) Payment by QR code:
+ * https://tech.yandex.com/money/doc/payment-solution/payment-process/payments-qr-docpage
  *
- * Описание процесса оплаты:
+ * 1.2) In Russian:
+ * 1.2.1) Оплата в реальном времени:
  * https://tech.yandex.ru/money/doc/payment-solution/payment-process/payment-process-intro-docpage
+ * 1.2.2) Оплата наличными через терминалы:
+ * https://tech.yandex.ru/money/doc/payment-solution/payment-process/payments-cash-docpage
+ * 1.2.3) Оплата через внешние платежные системы:
+ * https://tech.yandex.ru/money/doc/payment-solution/payment-process/payments-invoicing-docpage
+ * 1.2.4) Оплата в кредит
+ * https://tech.yandex.ru/money/doc/payment-solution/payment-process/payments-credit-docpage
+ * 1.2.5) Оплата по счету в смс
+ * https://tech.yandex.ru/money/doc/payment-solution/payment-process/sms-payments-docpage
+ * 1.2.6) Оплата через мобильное приложение Сбербанка
+ * https://tech.yandex.ru/money/doc/payment-solution/payment-process/sbol-payments-docpage
+ * 1.2.7) Отложенная оплата
+ * https://tech.yandex.ru/money/doc/payment-solution/payment-process/payments-hold-docpage
+ * 1.2.8) Оплата через мобильный терминал
+ * https://tech.yandex.ru/money/doc/payment-solution/payment-process/payments-mpos-docpage
+ * 1.2.9) Оплата по QR-коду
+ * https://tech.yandex.ru/money/doc/payment-solution/payment-process/payments-qr-docpage
  *
- * There are 3 event types:
- * 1) `checkOrder`
- * 1.1) In English: Order verification
+ * 2) There are 3 event types:
+ * 2.1) `checkOrder`
+ * 2.1.1) In English: Order verification
  * https://tech.yandex.com/money/doc/payment-solution/payment-notifications/payment-notifications-check-docpage
  *
  * This request allows the merchant to check the validity of transfer parameters before the user pays for the order
@@ -38,7 +73,7 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  * see the section Payment process description:
  * https://tech.yandex.com/money/doc/payment-solution/payment-process/payment-process-intro-docpage/
  *
- * 1.2) In Russian: Проверка заказа
+ * 2.1.2) In Russian: Проверка заказа
  * https://tech.yandex.ru/money/doc/payment-solution/payment-notifications/payment-notifications-check-docpage
  * 
  * Этот запрос позволяет магазину проверить корректность параметров перевода до того, как пользователь оплатит заказ
@@ -64,8 +99,8 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  * «Описание процесса оплаты»:
  * (https://tech.yandex.ru/money/doc/payment-solution/payment-process/payment-process-intro-docpage)
  *
- * 2) `cancelOrder`
- * 2.1) In English: Payment cancellation notification
+ * 2.2) `cancelOrder`
+ * 2.2.1) In English: Payment cancellation notification
  * https://tech.yandex.com/money/doc/payment-solution/payment-notifications/payment-notifications-cancel-docpage
  * The notification about the canceled order is sent to the merchant.
  * Used for payment with funds the user is requesting a loan for (`paymentType`=`KV`).
@@ -75,7 +110,7 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  * the store gets a Payment cancellation notification (cancelOrder).
  * The order won't be paid, and the hold on the item can be removed.
  *
- * 2.2) In Russian: Уведомление об отмене заказа
+ * 2.2.2) In Russian: Уведомление об отмене заказа
  * Уведомление об отмененном заказе отправляется магазину.
  * Используется при платеже средствами, которые пользователь берет в кредит (`paymentType`=`KV`).
  * Заказ может быть отменен только до перевода денег в адрес магазина.
