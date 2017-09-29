@@ -18,7 +18,7 @@ final class Method extends \Df\PaypalClone\Method {
 	 * @param float|int $a
 	 * @return string
 	 */
-	function amountFormat($a) {return df_f2($a);}
+	function amountFormat($a) {return dff_2($a);}
 
 	/**
 	 * 2017-09-24
