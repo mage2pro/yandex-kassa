@@ -1,5 +1,6 @@
 <?php
 namespace Dfe\YandexKassa;
+use Df\Core\Exception as DFE;
 use Dfe\YandexKassa\Source\Option;
 use Magento\Sales\Model\Order\Item as OI;
 /**
@@ -307,10 +308,14 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 */
 		,'shopSuccessUrl'
 	], $this->customerReturnRemote())
-	+ ($o && Option::LOAN !== $o ? [] : $this->pLoan());}
+	+ ($o && Option::LOAN !== $o ? [] : $this->pLoan())
+	+ (!$s->b('sendFiscalData') ? [] : ['ym_merchant_receipt' => df_json_encode($this->pTax())]);}
 
 	/**
 	 * 2017-09-25
+	 * 2017-09-26
+	 * [Yandex.Kassa] Is it allowed to pass some loan parameters (e.g. «goods_name_N»)
+	 * to money.yandex.ru/eshop.xml without passing «category_code_N»? https://mage2.pro/t/4565
 	 * @used-by pCharge()
 	 * @return array(string => mixed)
 	 */
@@ -343,4 +348,69 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 */
 		+ ['fixed_term' => $this->s()->b('provide1YearOnlyLoanTerm')]
 	;}
+
+	/**
+	 * 2017-09-25
+	 * «Parameters for creating a receipt» / «Параметры для формирования чека»
+	 * https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-receipt-docpage
+	 * https://tech.yandex.ru/money/doc/payment-solution/payment-form/payment-form-receipt-docpage
+	 * @used-by pCharge()
+	 * @return array(string => mixed)
+	 */
+	private function pTax() {return [
+		/**
+		 * 2017-09-25
+		 * «Buyer's phone number or email address.
+		 * Restrictions:
+		 * 		phone number in the format +792100000000 or email address (we check it)
+		 * 		you should only transmit one piece of information: either email address or phone number
+		 * 		you should not transmit several email addresses or phone numbers.»
+		 * «Телефон или эл. почта покупателя.
+		 * Ограничения:
+		 * 		номер телефона в формате +792100000000 или адрес электронной почты (проверяется соответствие);
+		 * 		следует передавать что-то одно: только адрес почты или только телефон;
+		 * 		не следует передавать несколько адресов или телефонов.»
+		 * Required, string(64).
+		 */
+		'customerContact' => $this->customerEmail()
+		,'items' => $this->oiLeafs(function(OI $i) {return [
+			// 2017-09-25 «Product price» / «Цена товара». Requrired, Object.
+			'price' => [
+				// 2017-09-25 «Price per unit» / «Цена за единицу товара».
+				// Requrired, CurrencyAmount (decimal accurate to the hundredths place).
+				'amount' => $this->amountFormat(df_oqi_price($i))
+			]
+			/**
+			 * 2017-09-25
+			 * «Product quantity.
+			 * Defines the quantity of products in the order or quantity of products sold by weight.»
+			 * «Количество товара. Описывает количество товаров в заказе или количество весового товара.»
+			 * Requrired, Decimal accurate to the thousandth place.
+			 */
+			,'quantity' => df_oqi_qty($i)
+			/**
+			 * 2017-09-25
+			 * «VAT rate. Possible values—a number from 1 to 6:
+			 * 		1 — without VAT
+			 * 		2 — VAT at the rate of 0%
+			 * 		3 — VAT of the receipt at the rate of 10%
+			 * 		4 — VAT of the receipt at the rate of 18%
+			 * 		5 — VAT of the receipt at the applicable rate of 10/110
+			 * 		6 — VAT of the receipt at the applicable rate of 18/118.»
+			 * «Ставка НДС. Возможные значения — число от 1 до 6:
+			 * 		1 — без НДС;
+			 * 		2 — НДС по ставке 0%;
+			 * 		3 — НДС чека по ставке 10%;
+			 * 		4 — НДС чека по ставке 18%;
+			 * 		5 — НДС чека по расчетной ставке 10/110;
+			 * 		6 — НДС чека по расчетной ставке 18/118.»
+			 * Requrired, int.
+			 */
+			,'tax' => dff_eq0($t = floatval($i->getTaxPercent()))
+				? ($this->s()->b('shouldPayVAT') ? 2 : 1)
+				: (dff_eq($t, 10) ? 3 : (dff_eq0($t, 18) ? 4 : df_error(
+					'An illegal tax rate (%1) is applied to the «%2» product.', dff_2i($t), $i->getName())
+				))
+		];})
+	];}
 }

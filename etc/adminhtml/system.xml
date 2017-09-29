@@ -116,9 +116,47 @@
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
+					id='sendFiscalData'
+					translate='label'
+					type='Df\Framework\Form\Element\Checkbox'
+					sortOrder='8'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Send the fiscal data to the Federal Tax Service of Russia?</label>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<comment><![CDATA[<ul class='df-note'><li><a href='https://yandex.ru/support/checkout/payments/tax-sync.html' target='_blank' title='Sending Receipts to Tax Service under Federal Law No.54'>What is it?</a></li><li>Apart from enabling it here, you need also <a href='https://yandex.ru/support/checkout/merchant/settings.html#settings__online-sales-register' target='_blank' title='Online Sales Register Settings'>enable it in your Yandex.Kassa merchant interface</a>.</li></ul>]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='shouldPayVAT'
+					translate='label'
+					type='Df\Framework\Form\Element\Checkbox'
+					sortOrder='9'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Whether your company should pay VAT?</label>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<comment><![CDATA[The extension automatically detects which VAT rate is applied for each order item.
+<br/>The extension will throw an exception if the applied rate differs from one of: <b>0%</b>,  <b>10%</b>,  <b>18%</b>.
+<br/>The «<b>Whether your company should pay VAT?</b>» option is used only in the zero-VAT cases:
+<ul class='df-note'>
+<li>If the option is <b>unchecked</b>, it means that your company is <b>not a VAT-payer</b>.</li>
+<li>If the option is <b>checked</b>, it means that your company <b>is a VAT-payer</b>, and the VAT rate is <b>0%</b>.</li>
+</ul>]]>
+</comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='sendFiscalData'>1</field>
+					</depends>
+				</field>
+				<field
 					id='idPrefix'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='9'
+					sortOrder='14'
 					translate='label'
 				>
 					<label>Payment ID prefix</label>
@@ -138,7 +176,7 @@
 				<field
 					id='optionsLocation'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='10'
+					sortOrder='15'
 					translate='label'
 					type='select'
 				>
@@ -150,7 +188,7 @@
 				<field
 					id='optionsPrompt'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='11'
+					sortOrder='16'
 					translate='label'
 					type='textarea'
 				>
@@ -164,7 +202,7 @@
 				<field
 					id='optionsDisplayMode'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='12'
+					sortOrder='17'
 					translate='label'
 					type='select'
 				>
@@ -180,7 +218,7 @@
 					dfRows='3'
 					id='optionsDescription'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='13'
+					sortOrder='18'
 					translate='label'
 					type='Df\Framework\Form\Element\Textarea'
 				>
@@ -200,7 +238,7 @@
 				<field
 					id='optionsLimit'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='14'
+					sortOrder='19'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -216,7 +254,7 @@
 					dfMultiselect_ordered='true'
 					id='optionsAllowed'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='15'
+					sortOrder='20'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
@@ -234,7 +272,7 @@
 					id='provide1YearOnlyLoanTerm'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
-					sortOrder='16'
+					sortOrder='21'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
