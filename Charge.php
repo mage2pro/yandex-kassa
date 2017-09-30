@@ -324,7 +324,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 			function($i, array $a) {return dfa_key_transform($a, function($k) use($i) {return "{$k}_{$i}";});}
 			,$this->oiLeafs(function(OI $i) {return [
 				// 2017-09-25 «Price per product unit» / «Стоимость единицы товара». Optional, CurrencyAmount.
-				'goods_cost' => $this->amountFormat(df_oqi_price($i, true))
+				'goods_cost' => $this->cFromDocF(df_oqi_price($i, true))
 				// 2017-09-25 «Product description» / «Описание товара». Optional, String(255).
 				,'goods_description' => df_oqi_desc($i, 255)
 				// 2017-09-25 «Название товара» / «Product name». Optional, String(255).
@@ -410,7 +410,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 				 * *) Информацию о скидке или предоплате можно добавить в название товара.
 				 * Пример: "text": "Предоплата 30%, настольная игра \"Tea Time\""}»
 				 */
-				'amount' => $this->amountFormat(df_oqi_price($i))
+				'amount' => $this->cFromDocF(df_oqi_price($i, false, true))
 			]
 			/**
 			 * 2017-09-25
