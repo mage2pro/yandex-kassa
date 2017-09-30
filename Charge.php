@@ -357,7 +357,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by pCharge()
 	 * @return array(string => mixed)
 	 */
-	private function pTax() {return [
+	private function pTax() {$o = $this->o(); return [
 		/**
 		 * 2017-09-25
 		 * «Buyer's phone number or email address.
@@ -373,78 +373,91 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * Required, string(64).
 		 */
 		'customerContact' => $this->customerEmail()
-		,'items' => $this->oiLeafs(function(OI $i) {return [
-			// 2017-09-25 «Product price» / «Цена товара». Requrired, Object.
-			'price' => [
-				/**
-				 * 2017-09-25 «Price per unit» / «Цена за единицу товара».
-				 * Requrired, CurrencyAmount (decimal accurate to the hundredths place).
-				 * 2017-09-29
-				 * «*) The amount field should contain a price for one piece of the product;
-				 * the quantity field should contain the quantity of the products.
-				 * If the amount field contains a price for one piece of the product,
-				 * you need to transmit number of pieces (quantity=2, for instance, two pies of one kind).
-				 * If the amount field contains a price for one kilogram of the product,
-				 * you need to transmit the product's weight
-				 * (quantity=1.253, for instance, a pie that weights 1 kg 253 g).
-				 * *) The specified price should be free of taxes.
-				 * *) Total amount you transmit to ym_merchant_receipt, should match the sum.
-				 * If they do not match, the receipt won't be created, and the payment might fail.
-				 * *) You can transmit up to 100 products to ym_merchant_receipt.
-				 * This means not more than 100 such blocks:
-				 * {"quantity": 1.154,"price": {"amount": 300.23},"tax": 3,"text": "Product A"}
-				 * *) You can add information about a discount or payment in advance to the product's name.
-				 * For instance: "text": "30% advance payment, tabletop game \"Tea Time\""}»
-				 *
-				 * «*) В поле amount указывается цена за единицу товара, в поле quantity — количество.
-				 * Если в amount указана цена за один товар, следует передавать количество штук
-				 * (quantity=2, например, два одинаковых пирога).
-				 * Если в amount указана цена за кг, следует передавать вес товара
-				 * (quantity=1.253, например, пирог весом 1 кг 253 г).
-				 * *) Цена указывается без учета налогов.
-				 * *) Общая сумма, которую вы передаете в ym_merchant_receipt, должна совпадать с суммой в sum.
-				 * Если они не совпадают, чек не сформируется, оплата может не пройти.
-				 * *) В ym_merchant_receipt можно передать не больше 100 товаров —
-				 * то есть не больше 100 таких блоков:
-				 * {"quantity": 1.154,"price": {"amount": 300.23},"tax": 3,"text": "Товар А"}
-				 * *) Информацию о скидке или предоплате можно добавить в название товара.
-				 * Пример: "text": "Предоплата 30%, настольная игра \"Tea Time\""}»
-				 */
-				'amount' => $this->cFromDocF(df_oqi_price($i, false, true))
-			]
+		,'items' => array_merge($this->oiLeafs(function(OI $i) {return $this->pTaxLeaf(
+			$i->getName(), df_oqi_price($i, false, true), floatval($i->getTaxPercent()), df_oqi_qty($i)
+		);}), [$this->pTaxLeaf('Доставка', $o->getShippingInclTax(), df_tax_rate_shipping($o))])
+	];}
+
+	/**
+	 * 2017-09-30
+	 * @used-by pTax()
+	 * @param string $name
+	 * @param float $amount
+	 * @param float $taxPercent
+	 * @param int $qty [optional]
+	 * @return array(string => mixed)
+	 */
+	private function pTaxLeaf($name, $amount, $taxPercent, $qty = 1) {return [
+		// 2017-09-25 «Product price» / «Цена товара». Requrired, Object.
+		'price' => [
 			/**
-			 * 2017-09-25
-			 * «Product quantity.
-			 * Defines the quantity of products in the order or quantity of products sold by weight.»
-			 * «Количество товара. Описывает количество товаров в заказе или количество весового товара.»
-			 * Requrired, Decimal accurate to the thousandth place.
+			 * 2017-09-25 «Price per unit» / «Цена за единицу товара».
+			 * Requrired, CurrencyAmount (decimal accurate to the hundredths place).
+			 * 2017-09-29
+			 * «*) The amount field should contain a price for one piece of the product;
+			 * the quantity field should contain the quantity of the products.
+			 * If the amount field contains a price for one piece of the product,
+			 * you need to transmit number of pieces (quantity=2, for instance, two pies of one kind).
+			 * If the amount field contains a price for one kilogram of the product,
+			 * you need to transmit the product's weight
+			 * (quantity=1.253, for instance, a pie that weights 1 kg 253 g).
+			 * *) The specified price should be free of taxes.
+			 * *) Total amount you transmit to ym_merchant_receipt, should match the sum.
+			 * If they do not match, the receipt won't be created, and the payment might fail.
+			 * *) You can transmit up to 100 products to ym_merchant_receipt.
+			 * This means not more than 100 such blocks:
+			 * {"quantity": 1.154,"price": {"amount": 300.23},"tax": 3,"text": "Product A"}
+			 * *) You can add information about a discount or payment in advance to the product's name.
+			 * For instance: "text": "30% advance payment, tabletop game \"Tea Time\""}»
+			 *
+			 * «*) В поле amount указывается цена за единицу товара, в поле quantity — количество.
+			 * Если в amount указана цена за один товар, следует передавать количество штук
+			 * (quantity=2, например, два одинаковых пирога).
+			 * Если в amount указана цена за кг, следует передавать вес товара
+			 * (quantity=1.253, например, пирог весом 1 кг 253 г).
+			 * *) Цена указывается без учета налогов.
+			 * *) Общая сумма, которую вы передаете в ym_merchant_receipt, должна совпадать с суммой в sum.
+			 * Если они не совпадают, чек не сформируется, оплата может не пройти.
+			 * *) В ym_merchant_receipt можно передать не больше 100 товаров —
+			 * то есть не больше 100 таких блоков:
+			 * {"quantity": 1.154,"price": {"amount": 300.23},"tax": 3,"text": "Товар А"}
+			 * *) Информацию о скидке или предоплате можно добавить в название товара.
+			 * Пример: "text": "Предоплата 30%, настольная игра \"Tea Time\""}»
 			 */
-			,'quantity' => df_oqi_qty($i)
-			/**
-			 * 2017-09-25
-			 * «VAT rate. Possible values—a number from 1 to 6:
-			 * 		1 — without VAT
-			 * 		2 — VAT at the rate of 0%
-			 * 		3 — VAT of the receipt at the rate of 10%
-			 * 		4 — VAT of the receipt at the rate of 18%
-			 * 		5 — VAT of the receipt at the applicable rate of 10/110
-			 * 		6 — VAT of the receipt at the applicable rate of 18/118.»
-			 * «Ставка НДС. Возможные значения — число от 1 до 6:
-			 * 		1 — без НДС;
-			 * 		2 — НДС по ставке 0%;
-			 * 		3 — НДС чека по ставке 10%;
-			 * 		4 — НДС чека по ставке 18%;
-			 * 		5 — НДС чека по расчетной ставке 10/110;
-			 * 		6 — НДС чека по расчетной ставке 18/118.»
-			 * Requrired, int.
-			 */
-			,'tax' => dff_eq0($t = floatval($i->getTaxPercent()))
-				? ($this->s()->b('shouldPayVAT') ? 2 : 1)
-				: (dff_eq($t, 10) ? 3 : (dff_eq0($t, 18) ? 4 : df_error(
-					'An illegal tax rate (%1) is applied to the «%2» product.', dff_2i($t), $i->getName())
-				))
-			// 2017-09-29 «Product name» / «Название товара». Required, string(128).
-			,'text' => df_oqi_desc($i, 128)
-		];})
+			'amount' => $this->cFromDocF($amount)
+		]
+		/**
+		 * 2017-09-25
+		 * «Product quantity.
+		 * Defines the quantity of products in the order or quantity of products sold by weight.»
+		 * «Количество товара. Описывает количество товаров в заказе или количество весового товара.»
+		 * Requrired, Decimal accurate to the thousandth place.
+		 */
+		,'quantity' => $qty
+		/**
+		 * 2017-09-25
+		 * «VAT rate. Possible values—a number from 1 to 6:
+		 * 		1 — without VAT
+		 * 		2 — VAT at the rate of 0%
+		 * 		3 — VAT of the receipt at the rate of 10%
+		 * 		4 — VAT of the receipt at the rate of 18%
+		 * 		5 — VAT of the receipt at the applicable rate of 10/110
+		 * 		6 — VAT of the receipt at the applicable rate of 18/118.»
+		 * «Ставка НДС. Возможные значения — число от 1 до 6:
+		 * 		1 — без НДС;
+		 * 		2 — НДС по ставке 0%;
+		 * 		3 — НДС чека по ставке 10%;
+		 * 		4 — НДС чека по ставке 18%;
+		 * 		5 — НДС чека по расчетной ставке 10/110;
+		 * 		6 — НДС чека по расчетной ставке 18/118.»
+		 * Requrired, int.
+		 */
+		,'tax' => dff_eq0($t = floatval($taxPercent))
+			? ($this->s()->b('shouldPayVAT') ? 2 : 1)
+			: (dff_eq($t, 10) ? 3 : (dff_eq0($t, 18) ? 4 : df_error(
+				'An illegal tax rate (%1) is applied to the «%2» order item.', dff_2i($t), $name)
+			))
+		// 2017-09-29 «Product name» / «Название товара». Required, string(128).
+		,'text' => df_chop($name, 128)
 	];}
 }
