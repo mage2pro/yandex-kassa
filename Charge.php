@@ -376,8 +376,40 @@ final class Charge extends \Df\PaypalClone\Charge {
 		,'items' => $this->oiLeafs(function(OI $i) {return [
 			// 2017-09-25 «Product price» / «Цена товара». Requrired, Object.
 			'price' => [
-				// 2017-09-25 «Price per unit» / «Цена за единицу товара».
-				// Requrired, CurrencyAmount (decimal accurate to the hundredths place).
+				/**
+				 * 2017-09-25 «Price per unit» / «Цена за единицу товара».
+				 * Requrired, CurrencyAmount (decimal accurate to the hundredths place).
+				 * 2017-09-29
+				 * «*) The amount field should contain a price for one piece of the product;
+				 * the quantity field should contain the quantity of the products.
+				 * If the amount field contains a price for one piece of the product,
+				 * you need to transmit number of pieces (quantity=2, for instance, two pies of one kind).
+				 * If the amount field contains a price for one kilogram of the product,
+				 * you need to transmit the product's weight
+				 * (quantity=1.253, for instance, a pie that weights 1 kg 253 g).
+				 * *) The specified price should be free of taxes.
+				 * *) Total amount you transmit to ym_merchant_receipt, should match the sum.
+				 * If they do not match, the receipt won't be created, and the payment might fail.
+				 * *) You can transmit up to 100 products to ym_merchant_receipt.
+				 * This means not more than 100 such blocks:
+				 * {"quantity": 1.154,"price": {"amount": 300.23},"tax": 3,"text": "Product A"}
+				 * *) You can add information about a discount or payment in advance to the product's name.
+				 * For instance: "text": "30% advance payment, tabletop game \"Tea Time\""}»
+				 *
+				 * «*) В поле amount указывается цена за единицу товара, в поле quantity — количество.
+				 * Если в amount указана цена за один товар, следует передавать количество штук
+				 * (quantity=2, например, два одинаковых пирога).
+				 * Если в amount указана цена за кг, следует передавать вес товара
+				 * (quantity=1.253, например, пирог весом 1 кг 253 г).
+				 * *) Цена указывается без учета налогов.
+				 * *) Общая сумма, которую вы передаете в ym_merchant_receipt, должна совпадать с суммой в sum.
+				 * Если они не совпадают, чек не сформируется, оплата может не пройти.
+				 * *) В ym_merchant_receipt можно передать не больше 100 товаров —
+				 * то есть не больше 100 таких блоков:
+				 * {"quantity": 1.154,"price": {"amount": 300.23},"tax": 3,"text": "Товар А"}
+				 * *) Информацию о скидке или предоплате можно добавить в название товара.
+				 * Пример: "text": "Предоплата 30%, настольная игра \"Tea Time\""}»
+				 */
 				'amount' => $this->amountFormat(df_oqi_price($i))
 			]
 			/**
