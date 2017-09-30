@@ -387,7 +387,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 		$o = $this->o(); /** @var O $o */
 		/** @var array(string => mixed) $r */
 		$r = array_merge($this->oiLeafs(function(OI $i) {return $this->pTaxLeaf(
-			$i->getName(), df_oqi_price($i, false, true), floatval($i->getTaxPercent()), df_oqi_qty($i)
+			$i->getName(), df_oqi_price($i, false, true), df_oqi_tax_percent($i), df_oqi_qty($i)
 		);}), [$this->pTaxLeaf('Доставка', $o->getShippingInclTax(), df_tax_rate_shipping($o))]);
 		/**
 		 * 2017-09-30
