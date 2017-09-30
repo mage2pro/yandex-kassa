@@ -2,6 +2,7 @@
 namespace Dfe\YandexKassa;
 use Df\Core\Exception as DFE;
 use Dfe\YandexKassa\Source\Option;
+use Magento\Sales\Model\Order as O;
 use Magento\Sales\Model\Order\Item as OI;
 /**
  * 2017-09-16
@@ -357,7 +358,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by pCharge()
 	 * @return array(string => mixed)
 	 */
-	private function pTax() {$o = $this->o(); return [
+	private function pTax() {return [
 		/**
 		 * 2017-09-25
 		 * «Buyer's phone number or email address.
@@ -373,14 +374,45 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * Required, string(64).
 		 */
 		'customerContact' => $this->customerEmail()
-		,'items' => array_merge($this->oiLeafs(function(OI $i) {return $this->pTaxLeaf(
-			$i->getName(), df_oqi_price($i, false, true), floatval($i->getTaxPercent()), df_oqi_qty($i)
-		);}), [$this->pTaxLeaf('Доставка', $o->getShippingInclTax(), df_tax_rate_shipping($o))])
+		// 2017-09-30 «Products» / «Товары». Required, object.
+		,'items' => $this->pTaxLeafs()
 	];}
 
 	/**
 	 * 2017-09-30
 	 * @used-by pTax()
+	 * @return array(string => mixed)
+	 */
+	private function pTaxLeafs() {
+		$o = $this->o(); /** @var O $o */
+		/** @var array(string => mixed) $r */
+		$r = array_merge($this->oiLeafs(function(OI $i) {return $this->pTaxLeaf(
+			$i->getName(), df_oqi_price($i, false, true), floatval($i->getTaxPercent()), df_oqi_qty($i)
+		);}), [$this->pTaxLeaf('Доставка', $o->getShippingInclTax(), df_tax_rate_shipping($o))]);
+		/**
+		 * 2017-09-30
+		 * It is really a string, not float: @see \Dfe\YandexKassa\Method::amountFormat()
+		 * @var string $amoutFromTotalS
+		 */
+		$amoutFromTotalS = $this->amountF();
+		/** @var float $amountCalculated */
+		$amountCalculated = array_sum(array_map(function(array $i) {return
+			$i['quantity'] * $i['price']['amount']
+		;}, $r));
+		if (!dff_eq($amoutFromTotalS, $amountCalculated)) {
+			df_error_html(
+				"Unable to generate tax data for Yandex.Kassa."
+				."<br/>The order's grand total is <b>%1</b>."
+				."<br/>The calculated grand total from tax data is <b>%2</b>."
+				,$amoutFromTotalS, dff_2($amountCalculated)
+			);
+		}
+		return $r;
+	}
+
+	/**
+	 * 2017-09-30
+	 * @used-by pTaxLeafs()
 	 * @param string $name
 	 * @param float $amount
 	 * @param float $taxPercent
