@@ -129,10 +129,7 @@
 					<comment><![CDATA[<a href='https://yandex.ru/support/checkout/payments/tax-sync.html' target='_blank' title='Sending Receipts to Tax Service under Federal Law No.54'>What is it?</a>
 <br/>If you enable this feature, you <b>should</b>:
 <ul class='df-note'><li><a href='https://yandex.ru/support/checkout/merchant/settings.html#settings__online-sales-register' target='_blank' title='Online Sales Register Settings'>Enable it in your <b>Yandex.Kassa merchant interface</b></a>.</li>
-<li><a href='https://mage2.pro/t/4595' target='_blank' title='How to setup tax classes and rates for Russia?' title='НК РФ Статья 164. Налоговые ставки' target='_blank'>Setup your store's tax rates</a> in accordance with the <a href='http://www.consultant.ru/document/cons_doc_LAW_28165/35cc6698564adc4507baa31c9cfdbb4f2516d068'>Russian tax law</a>: you can have only 18%, 10% and 0% rates, every other tax rate will fail for a Yandex.Kassa payment.</li>
-<li><a href='https://mage2.pro/t/4596' target='_blank' title='How to setup the «Apply Customer Tax» and «Apply Discount On Prices» in accordance with the Russian tax law?'>Setup the «<b>Apply Customer Tax</b>» and «<b>Apply Discount On Prices</b>» options in accordance with the Russian tax law</a>.</li>
-<li>Setup the «Sales» → «Tax» → «Tax Classes» → «<b>Tax Class for Shipping</b>» option.</li>
-<li>Specify a <b>tax class for each product</b> (I also recommend to specify  the default product tax class: «Sales» → «Tax» → «Tax Classes» → «Tax Class for Product», it will be the default value for new products).</li>
+<li><a href='https://mage2.pro/t/4595' title='How to setup tax for Russia?' target='_blank'>Setup your Magento tax settings in accordance with the the Russian tax law</a>.</li>
 </ul>]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
