@@ -131,6 +131,8 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  * Этим запросом Яндекс.Касса сообщает магазину, что перевод денег пользователя в адрес магазина прошел успешно.
  * Это значит, что магазин обязан выдать пользователю товар или оказать оплаченную услугу.
  * https://tech.yandex.ru/money/doc/payment-solution/payment-notifications/payment-notifications-aviso-docpage
+ *
+ * 2017-10-02 `[Yandex.Kassa] An example of a «checkOrder» notification`: https://mage2.pro/t/4607
  */
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
