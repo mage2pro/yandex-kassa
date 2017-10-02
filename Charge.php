@@ -15,6 +15,7 @@ use Magento\Sales\Model\Order\Item as OI;
  * «Протокол приема платежей для магазинов» → «Платежная форма» → «Форма для HTTP-уведомлений»
  * → «Параметры формы»:
  * https://tech.yandex.ru/money/doc/payment-solution/payment-form/payment-form-http-docpage
+ * 2017-10-02 «[Yandex.Kassa] An example of a request to money.yandex.ru/eshop.xml»: https://mage2.pro/t/4606
  * @method Method m()
  * @method Settings s()
  */
@@ -386,9 +387,21 @@ final class Charge extends \Df\PaypalClone\Charge {
 	private function pTaxLeafs() {
 		$o = $this->o(); /** @var O $o */
 		/** @var array(string => mixed) $r */
-		$r = array_merge($this->oiLeafs(function(OI $i) {return $this->pTaxLeaf(
-			$i->getName(), df_oqi_price($i, false, true), df_oqi_tax_percent($i), df_oqi_qty($i)
-		);}), [$this->pTaxLeaf('Доставка', $o->getShippingInclTax(), df_tax_rate_shipping($o))]);
+		$r = array_merge(
+			$this->oiLeafs(function(OI $i) {return $this->pTaxLeaf(
+				$i->getName(), df_oqi_price($i, false, true), df_oqi_tax_percent($i), df_oqi_qty($i)
+			);})
+			,[$this->pTaxLeaf('Доставка',
+				/**
+				 * 2017-10-02
+				 * I need the shipping cost WITH discount but WITHOUT tax.
+				 * `shipping_amount`: it is the shipping cost WITHOUT discount and tax.
+				 * `shipping_tax_amount`: it is the tax.
+				 * `shipping_discount_amount`: it is the discount (a positive value, so I subtract it).
+				 */
+				$o->getShippingAmount() - $o->getShippingDiscountAmount(), df_tax_rate_shipping($o)
+			)]
+		);
 		/**
 		 * 2017-09-30
 		 * It is really a string, not float: @see \Dfe\YandexKassa\Method::amountFormat()
@@ -397,13 +410,15 @@ final class Charge extends \Df\PaypalClone\Charge {
 		$amoutFromTotalS = $this->amountF();
 		/** @var float $amountCalculated */
 		$amountCalculated = array_sum(array_map(function(array $i) {return
-			$i['quantity'] * $i['price']['amount']
+			$i['quantity'] * $i['price']['amount'] * (3 === $i['tax'] ? 1.1 : (4 === $i['tax'] ? 1.18 : 1))
 		;}, $r));
 		if (!dff_eq($amoutFromTotalS, $amountCalculated)) {
 			df_error_html(
 				"Unable to generate tax data for Yandex.Kassa."
 				."<br/>The order's grand total is <b>%1</b>."
 				."<br/>The calculated grand total from tax data is <b>%2</b>."
+				."<br/>The tax data:<br/>"
+				. df_json_encode($r)
 				,$amoutFromTotalS, dff_2($amountCalculated)
 			);
 		}
@@ -414,7 +429,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * 2017-09-30
 	 * @used-by pTaxLeafs()
 	 * @param string $name
-	 * @param float $amount
+	 * @param float $amount  It should be without tax!
 	 * @param float $taxPercent
 	 * @param int $qty [optional]
 	 * @return array(string => mixed)
