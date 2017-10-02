@@ -38,8 +38,8 @@ final class Signer extends \Df\PaypalClone\Signer {
 	 * @used-by \Df\PaypalClone\Signer::_sign()
 	 * @return string
 	 */
-	protected function sign() {$s = $this->s(); return md5(implode(';', $this->v([
+	protected function sign() {$s = $this->s(); return strtoupper(md5(implode(';', $this->v([
 		'action', 'orderSumAmount', 'orderSumCurrencyPaycash', 'orderSumBankPaycash', $s->merchantID()
 		,'invoiceId', 'customerNumber', $s->privateKey()
-	])));}
+	]))));}
 }
