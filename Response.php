@@ -1,5 +1,6 @@
 <?php
 namespace Dfe\YandexKassa;
+use Df\PaypalClone\W\Exception\InvalidSignature;
 use Df\Xml\G;
 use Dfe\YandexKassa\W\Event as Ev;
 use Magento\Framework\App\Response\Http;
@@ -96,7 +97,7 @@ class Response extends \Df\Framework\Controller\Response {
 		 * Ошибка разбора запроса
 		 * Магазин не в состоянии разобрать запрос. Окончательная ошибка.
 		 */
-		'code' => 0
+		'code' => !$this->_ex ? 0 : ($this->_ex instanceof InvalidSignature ? 1 : 200)
 		// 2017-10-03
 		// «Yandex.Checkout transaction ID. Must match the invoiceId field in the request.»
 		// «Идентификатор транзакции в Яндекс.Кассе. Должен дублировать поле invoiceId запроса.»
@@ -160,7 +161,21 @@ class Response extends \Df\Framework\Controller\Response {
 		// «Store ID. Must match the `shopId` field in the request.»
 		// «Идентификатор магазина. Должен дублировать поле `shopId` запроса.»
 		,'shopId' => $this->_ev->r('shopId')
-	]]);}
+		/**
+		 * 2017-10-03
+		 * «Additional text explanation of the merchant's response.
+		 * This is usually used for more detailed information about errors. Optional field.»
+		 * «Дополнительное текстовое пояснение ответа магазина.
+		 * Как правило, используется как дополнительная информация об ошибках. Необязательное поле.»
+		 * String(64)
+		 */
+		,'techMessage' => 'Author: Dmitry Fedyuk (https://mage2.pro, admin@mage2.pro)'
+	] + (!$this->_ex ? [] : [
+		// 2017-10-03
+		// «Text explanation if the payment is not accepted» / «Текстовое пояснение в случае отказа принять платеж»
+		// String(255)
+		'message' => df_chop($this->_ex->message(), 255)
+	])]);}
 
 	/**
 	 * 2017-10-02
