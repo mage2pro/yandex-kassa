@@ -12,8 +12,8 @@ Yandex.Kassa also works in Armenia, Azerbaijan, Belarus, Georgia, Kazakhstan, Ky
 - [A payment confirmation message to a customer in the Yandex.Kassa interface](https://mage2.pro/t/topic/4619)  
 
 ## How to buy
-The extension is not released yet, so there is no way to buy it just now.  
-The extension will be released when I will want so.  
+You can buy it with PayPal [here](https://mage2.pro/t/3693).  
+There are [local payment options](http://magento-forum.ru/topic/1003) available to Russia-based customers.
 
 ## How to install
 ### 1. Free installation service
