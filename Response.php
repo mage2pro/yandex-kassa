@@ -72,7 +72,7 @@ class Response extends \Df\Framework\Controller\Response {
 		 * 1: Authorization error
 		 * The md5 parameter does not match the result of calculating the hash function. Fatal error.
 		 *
-		 * 100: Refused to accept transfer
+		 * 100: Refused to accept transfer (it is only for the `checkOrder` notification)
 		 * Refusal to accept the transfer with the specified parameters. Fatal error.
 		 *
 		 * 200: Request parsing error
