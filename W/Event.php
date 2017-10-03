@@ -136,6 +136,32 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  */
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
+	 * 2017-10-03
+	 * @override
+	 * @see \Df\PaypalClone\W\Event::isSuccessful()
+	 * @used-by ttCurrent()
+	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
+	 * @return bool
+	 */
+	function isSuccessful() {return 'cancelOrder' !== $this->status();}
+
+	/**
+	 * 2017-09-14 The type of the current transaction.
+	 * «Operation Statuses»:
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_statuses_en.html.md#operation-statuses
+	 * «Статусы операций»:
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_statuses_ru.html.md#Статусы-операций
+	 * @override
+	 * @see \Df\PaypalClone\W\Event::ttCurrent()
+	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
+	 * @used-by \Df\PaypalClone\W\Nav::id()
+	 * @used-by \Dfe\Qiwi\W\Handler::strategyC()
+	 */
+	function ttCurrent() {return !$this->isSuccessful() ? parent::ttCurrent() : dfa([
+		'checkOrder' => self::T_INFO, 'paymentAviso' => self::T_CAPTURE
+	], $this->status());}
+
+	/**
 	 * 2017-09-25
 	 * «Unique transaction number in Yandex.Checkout» / «Уникальный номер транзакции в Яндекс.Кассе»
 	 * Type: long.
@@ -167,11 +193,11 @@ final class Event extends \Df\PaypalClone\W\Event {
 	protected function k_signature() {return 'md5';}
 
 	/**
-	 * 2017-09-24
+	 * 2017-10-03
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_status()
 	 * @used-by \Df\PaypalClone\W\Event::status()
 	 * @return string|null
 	 */
-	protected function k_status() {return null;}
+	protected function k_status() {return 'action';}
 }
