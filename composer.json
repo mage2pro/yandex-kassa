@@ -1,6 +1,6 @@
 {
 	"name": "mage2pro/yandex-kassa"
-	,"version": "0.3.9"
+	,"version": "1.0.0"
 	,"description": "The «Yandex.Kassa» (Яндекс.Касса, Yandex.Checkout) payment extension for Magento 2."
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions/yandex-kassa"
