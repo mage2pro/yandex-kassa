@@ -9,7 +9,9 @@ Yandex.Kassa also works in Armenia, Azerbaijan, Belarus, Georgia, Kazakhstan, Ky
 - [The backend settings](https://mage2.pro/t/topic/4498)
 - The user interfaces for a payment:
   - [bank card](https://mage2.pro/t/topic/4597)
-- [A payment confirmation message to a customer in the Yandex.Kassa interface](https://mage2.pro/t/topic/4619)  
+- A payment confirmation to a customer:
+  - [in the Yandex.Kassa interface](https://mage2.pro/t/topic/4619)
+  - [by email](https://mage2.pro/t/topic/4622)
 
 ## How to buy
 You can buy it with PayPal [here](https://mage2.pro/t/3693).  
