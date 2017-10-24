@@ -24,7 +24,6 @@ https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-htt
 				<optionsLocation>magento</optionsLocation>
 				<optionsPrompt><![CDATA[Выберите способ оплаты и нажмите внизу кнопку «<b>Оплатить</b>»:]]></optionsPrompt>
 				<requireBillingAddress>0</requireBillingAddress>
-				<payment_action>authorize_capture</payment_action>
 				<title>Яндекс.Касса</title>
 				<title_backend>Yandex.Kassa</title_backend>
 			</yandex_kassa>
