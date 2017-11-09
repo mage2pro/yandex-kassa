@@ -1,4 +1,4 @@
-The extension integrates your Magento 2 store with the **[Yandex.Kassa](https://checkout.yandex.com)** (as known as Yandex.Checkout, Яндекс.Касса) payment service (Russia).  
+The extension integrates your Magento 2 based webstore with the **[Yandex.Kassa](https://checkout.yandex.com)** (as known as Yandex.Checkout, Яндекс.Касса) payment service (Russia).  
 Yandex.Kassa holds **[30% market share (2017)](https://mage2.pro/t/3716)** among the payment service providers in Russia by the number of websites using it.
 Yandex.Kassa also works in Armenia, Azerbaijan, Belarus, Georgia, Kazakhstan, Kyrgyzstan, Latvia, Moldova, Tajikistan.
 
