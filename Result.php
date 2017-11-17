@@ -3,8 +3,8 @@ namespace Dfe\YandexKassa;
 use Df\PaypalClone\W\Exception\InvalidSignature;
 use Df\Xml\G;
 use Dfe\YandexKassa\W\Event as Ev;
-use Magento\Framework\App\Response\Http;
-use Magento\Framework\App\Response\HttpInterface as IHttp;
+use Magento\Framework\App\Response\Http as HttpResponse;
+use Magento\Framework\App\Response\HttpInterface as IHttpResponse;
 use Zend_Date as ZD;
 use \Exception as Ex;
 
@@ -55,6 +55,9 @@ use \Exception as Ex;
 class Result extends \Df\Framework\W\Result {
 	/**
 	 * 2017-10-02
+	 * 2017-11-17
+	 * We can use the PHP «final» keyword here,
+	 * because the method is absent in @see \Magento\Framework\Controller\ResultInterface
 	 * @override
 	 * @see \Df\Framework\W\Result::__toString()
 	 * @used-by render()
@@ -182,11 +185,10 @@ class Result extends \Df\Framework\W\Result {
 	 * @override
 	 * @see \Magento\Framework\Controller\AbstractResult::render()
 	 * https://github.com/magento/magento2/blob/2.1.0/lib/internal/Magento/Framework/Controller/AbstractResult.php#L109-L113
-	 * @param IHttp|Http $res
-	 * @return $this
+	 * @param IHttpResponse|HttpResponse $r
 	 */
-	final protected function render(IHttp $res) {
-		$res->setBody($this->__toString());
+	final protected function render(IHttpResponse $r) {
+		$r->setBody($this->__toString());
 		/**
 		 * 2017-10-02
 		 * In English: «MIME type: application/xml».
@@ -194,8 +196,7 @@ class Result extends \Df\Framework\W\Result {
 		 * In Russian: «MIME-тип: application/xml».
 		 * https://tech.yandex.ru/money/doc/payment-solution/payment-notifications/payment-notifications-http-docpage/
 		 */
-		df_response_content_type('application/xml', $res);
-		return $this;
+		df_response_content_type('application/xml', $r);
 	}
 
 	/**
