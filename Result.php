@@ -52,11 +52,11 @@ use \Exception as Ex;
  *
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
  */
-class Response extends \Df\Framework\W\Response {
+class Result extends \Df\Framework\W\Result {
 	/**
 	 * 2017-10-02
 	 * @override
-	 * @see \Df\Framework\W\Response::__toString()
+	 * @see \Df\Framework\W\Result::__toString()
 	 * @used-by render()
 	 * @used-by \Df\Payment\W\Action::execute()
 	 * @return string

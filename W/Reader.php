@@ -10,7 +10,7 @@ final class Reader extends \Df\Payment\W\Reader {
 	 *	}
 	 * 2017-10-03
 	 * We need to distinguish the notifications not only for a payment title decoration,
-	 * but primarily for \Dfe\YandexKassa\Response::__toString():
+	 * but primarily for \Dfe\YandexKassa\Result::__toString():
 	 * a response's root tag should start with the notification type.
 	 * @override
 	 * @see \Df\Payment\W\Reader::kt()

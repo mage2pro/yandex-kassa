@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\YandexKassa\W;
-use Dfe\YandexKassa\Response;
+use Dfe\YandexKassa\Result;
 /**
  * 2017-10-02
  * @method Event e()
@@ -12,9 +12,9 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * @see \Df\Payment\W\Responder::error()
 	 * @used-by \Df\Payment\W\Responder::setError()
 	 * @param \Exception $e
-	 * @return Response
+	 * @return Result
 	 */
-	protected function error(\Exception $e) {return Response::i($this->e(), $e);}
+	protected function error(\Exception $e) {return Result::i($this->e(), $e);}
 
 	/**
 	 * 2017-10-02
@@ -22,7 +22,7 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * @see \Df\Payment\W\Responder::notForUs()
 	 * @used-by \Df\Payment\W\Responder::setNotForUs()
 	 * @param string|null $message [optional]
-	 * @return Response
+	 * @return Result
 	 */
 	protected function notForUs($message = null) {return $this->success();}
 
@@ -32,7 +32,7 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * @see \Df\Payment\W\Responder::success()
 	 * @used-by notForUs()
 	 * @used-by \Df\Payment\W\Responder::get()
-	 * @return Response
+	 * @return Result
 	 */
-	protected function success() {return Response::i($this->e());}
+	protected function success() {return Result::i($this->e());}
 }
