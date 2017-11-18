@@ -10,4 +10,6 @@
 			</argument>
 		</arguments>
 	</type>
+	<virtualType name='Dfe\YandexKassa\Controller\CustomerReturn\Index' type='Df\Payment\CustomerReturn'/>
+	<virtualType name='Dfe\YandexKassa\Controller\Index\Index' type='Df\Payment\W\Action'/>
 </config>
