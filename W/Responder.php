@@ -11,10 +11,10 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * @override
 	 * @see \Df\Payment\W\Responder::error()
 	 * @used-by \Df\Payment\W\Responder::setError()
-	 * @param \Exception $e
+	 * @param \Exception|string $e
 	 * @return Result
 	 */
-	protected function error(\Exception $e) {return Result::i($this->e(), $e);}
+	protected function error($e) {df_assert($e instanceof \Exception); return Result::i($this->e(), $e);}
 
 	/**
 	 * 2017-10-02
