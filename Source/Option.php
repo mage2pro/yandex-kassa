@@ -6,9 +6,9 @@ namespace Dfe\YandexKassa\Source;
  * [Yandex.Kassa] The payment options: https://mage2.pro/t/4494
  * https://tech.yandex.com/money/doc/payment-solution/reference/payment-type-codes-docpage
  * https://tech.yandex.ru/money/doc/payment-solution/reference/payment-type-codes-docpage
- * 
- * @method static Option s()
+ *
  * @used-by \Dfe\YandexKassa\Settings::options()
+ * @method static Option s()
  */
 final class Option extends \Df\Config\Source {
 	/**
