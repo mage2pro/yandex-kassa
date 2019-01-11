@@ -1,12 +1,12 @@
 <?php
 namespace Dfe\YandexKassa;
+use \Exception as Ex;
 use Df\PaypalClone\W\Exception\InvalidSignature;
 use Df\Xml\G;
 use Dfe\YandexKassa\W\Event as Ev;
 use Magento\Framework\App\Response\Http as HttpResponse;
 use Magento\Framework\App\Response\HttpInterface as IHttpResponse;
 use Zend_Date as ZD;
-use \Exception as Ex;
 
 /**
  * 2017-10-02
