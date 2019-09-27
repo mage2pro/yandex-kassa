@@ -4,7 +4,7 @@
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd"
 >
 	<router id='standard'>
-		<route id='Dfe_YandexKassa' frontName='dfe-yandex-kassa'>
+		<route frontName='dfe-yandex-kassa' id='Dfe_YandexKassa'>
 			<module name='Dfe_YandexKassa'/>
 		</route>
 	</router>
