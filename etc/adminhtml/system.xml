@@ -256,7 +256,7 @@ So the `sortOrder` value is 1920. -->
 				>
 					<label>Limit the payment options availability?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<comment><![CDATA[If checked, only the selected options will be shown to the customers.]]></comment>
+					<comment><![CDATA[If checked, only the selected options will be shown to customers.]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='optionsLocation'>magento</field>
@@ -272,7 +272,7 @@ So the `sortOrder` value is 1920. -->
 				>
 					<label>Allowed Payment Options</label>
 					<source_model>Dfe\YandexKassa\Source\Option</source_model>
-					<comment><![CDATA[Only the selected options will be shown to the customers on the Magento checkout screen.<br/>You can <b>reorder</b> the options by drag and drop.]]></comment>
+					<comment><![CDATA[Only the selected options will be shown to customers on the Magento checkout screen.<br/>You can <b>reorder</b> the options by drag and drop.]]></comment>
 					<validate>required-entry</validate>
 					<depends>
 						<field id='enable'>1</field>
