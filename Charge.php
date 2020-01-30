@@ -323,7 +323,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 */
 	private function pLoan() {return
 		dfa_flatten(df_map_k(
-			function($i, array $a) {return dfa_key_transform($a, function($k) use($i) {return "{$k}_{$i}";});}
+			function($i, array $a) {return dfak_transform($a, function($k) use($i) {return "{$k}_{$i}";});}
 			,$this->oiLeafs(function(OI $i) {return [
 				// 2017-09-25 «Price per product unit» / «Стоимость единицы товара». Optional, CurrencyAmount.
 				'goods_cost' => $this->cFromDocF(df_oqi_price($i, true))
