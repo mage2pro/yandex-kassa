@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\YandexKassa\Block;
-// 2017-04-13
+# 2017-04-13
 /** @final Unable to use the PHP «final» keyword here because of the M2 code generation. */
 class Info extends \Df\Payment\Block\Info {
 	/**

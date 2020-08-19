@@ -2,7 +2,7 @@
 namespace Dfe\YandexKassa;
 use Df\Payment\Settings\Options as O;
 use Dfe\YandexKassa\Source\Option as OptionSource;
-// 2017-09-16
+# 2017-09-16
 /** @method static Settings s() */
 final class Settings extends \Df\Payment\Settings {
 	/**

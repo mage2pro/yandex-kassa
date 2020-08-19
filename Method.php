@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\YandexKassa;
-// 2017-09-17
+# 2017-09-17
 final class Method extends \Df\PaypalClone\Method {
 	/**
 	 * 2017-09-17

@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\YandexKassa\Init;
-// 2017-09-16
+# 2017-09-16
 /** @method \Dfe\YandexKassa\Method m() */
 final class Action extends \Df\PaypalClone\Init\Action {
 	/**

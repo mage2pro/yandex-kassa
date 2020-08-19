@@ -101,9 +101,9 @@ class Result extends \Df\Framework\W\Result {
 		 * Магазин не в состоянии разобрать запрос. Окончательная ошибка.
 		 */
 		'code' => !$this->_ex ? 0 : ($this->_ex instanceof InvalidSignature ? 1 : 200)
-		// 2017-10-03
-		// «Yandex.Checkout transaction ID. Must match the invoiceId field in the request.»
-		// «Идентификатор транзакции в Яндекс.Кассе. Должен дублировать поле invoiceId запроса.»
+		# 2017-10-03
+		# «Yandex.Checkout transaction ID. Must match the invoiceId field in the request.»
+		# «Идентификатор транзакции в Яндекс.Кассе. Должен дублировать поле invoiceId запроса.»
 		,'invoiceId' => $this->_ev->r('invoiceId')
 		/**
 		 * 2017-10-03
@@ -160,9 +160,9 @@ class Result extends \Df\Framework\W\Result {
 		 * 		19 часов 1 июля 2011 года, часовой пояс Europe/Moscow (UTC+04:00).
 		 */
 		,'performedDatetime' => ZD::now()->toString(ZD::ISO_8601)
-		// 2017-10-03
-		// «Store ID. Must match the `shopId` field in the request.»
-		// «Идентификатор магазина. Должен дублировать поле `shopId` запроса.»
+		# 2017-10-03
+		# «Store ID. Must match the `shopId` field in the request.»
+		# «Идентификатор магазина. Должен дублировать поле `shopId` запроса.»
 		,'shopId' => $this->_ev->r('shopId')
 		/**
 		 * 2017-10-03
@@ -174,9 +174,9 @@ class Result extends \Df\Framework\W\Result {
 		 */
 		,'techMessage' => 'Author: Dmitry Fedyuk (https://mage2.pro, admin@mage2.pro)'
 	] + (!$this->_ex ? [] : [
-		// 2017-10-03
-		// «Text explanation if the payment is not accepted» / «Текстовое пояснение в случае отказа принять платеж»
-		// String(255)
+		# 2017-10-03
+		# «Text explanation if the payment is not accepted» / «Текстовое пояснение в случае отказа принять платеж»
+		# String(255)
 		'message' => df_chop($this->_ex->message(), 255)
 	])]);}
 

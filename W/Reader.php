@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\YandexKassa\W;
-// 2017-10-02
+# 2017-10-02
 final class Reader extends \Df\Payment\W\Reader {
 	/**             
 	 * 2017-10-02 `[Yandex.Kassa] An example of a «checkOrder» notification`: https://mage2.pro/t/4607

@@ -325,13 +325,13 @@ final class Charge extends \Df\PaypalClone\Charge {
 		dfa_flatten(df_map_k(
 			function($i, array $a) {return dfak_transform($a, function($k) use($i) {return "{$k}_{$i}";});}
 			,$this->oiLeafs(function(OI $i) {return [
-				// 2017-09-25 «Price per product unit» / «Стоимость единицы товара». Optional, CurrencyAmount.
+				# 2017-09-25 «Price per product unit» / «Стоимость единицы товара». Optional, CurrencyAmount.
 				'goods_cost' => $this->cFromDocF(df_oqi_price($i, true))
-				// 2017-09-25 «Product description» / «Описание товара». Optional, String(255).
+				# 2017-09-25 «Product description» / «Описание товара». Optional, String(255).
 				,'goods_description' => df_oqi_desc($i, 255)
-				// 2017-09-25 «Название товара» / «Product name». Optional, String(255).
+				# 2017-09-25 «Название товара» / «Product name». Optional, String(255).
 				,'goods_name' => $i->getName()
-				// 2017-09-25 «Number of units of the product» / «Количество единиц товара». Optional, Int.
+				# 2017-09-25 «Number of units of the product» / «Количество единиц товара». Optional, Int.
 				,'goods_quantity' => df_oqi_qty($i)
 			];})
 		))
@@ -375,7 +375,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * Required, string(64).
 		 */
 		'customerContact' => $this->customerEmail()
-		// 2017-09-30 «Products» / «Товары». Required, object.
+		# 2017-09-30 «Products» / «Товары». Required, object.
 		,'items' => $this->pTaxLeafs()
 	];}
 
@@ -435,7 +435,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @return array(string => mixed)
 	 */
 	private function pTaxLeaf($name, $amount, $taxPercent, $qty = 1) {return [
-		// 2017-09-25 «Product price» / «Цена товара». Requrired, Object.
+		# 2017-09-25 «Product price» / «Цена товара». Requrired, Object.
 		'price' => [
 			/**
 			 * 2017-09-25 «Price per unit» / «Цена за единицу товара».
@@ -504,7 +504,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 			: (dff_eq($t, 10) ? 3 : (dff_eq($t, 18) ? 4 : df_error(
 				'An illegal tax rate (%1) is applied to the «%2» order item.', dff_2i($t), $name)
 			))
-		// 2017-09-29 «Product name» / «Название товара». Required, string(128).
+		# 2017-09-29 «Product name» / «Название товара». Required, string(128).
 		,'text' => df_chop($name, 128)
 	];}
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\YandexKassa;
 use Df\Payment\ConfigProvider\IOptions;
-// 2017-09-17
+# 2017-09-17
 /** @method Settings s() */
 final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOptions {
 	/**
