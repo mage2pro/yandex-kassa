@@ -2,10 +2,7 @@
 namespace Dfe\YandexKassa;
 use \Exception as Ex;
 use Df\PaypalClone\W\Exception\InvalidSignature;
-use Df\Xml\G;
 use Dfe\YandexKassa\W\Event as Ev;
-use Magento\Framework\App\Response\Http as HttpResponse;
-use Magento\Framework\App\Response\HttpInterface as IHttpResponse;
 use Zend_Date as ZD;
 
 /**
@@ -52,19 +49,15 @@ use Zend_Date as ZD;
  *
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
  */
-class Result extends \Df\Framework\W\Result {
+class Result extends \Df\Framework\W\Result\Xml {
 	/**
-	 * 2017-10-02
-	 * 2017-11-17
-	 * We can use the PHP «final» keyword here,
-	 * because the method is absent in @see \Magento\Framework\Controller\ResultInterface
+	 * 2021-12-03
 	 * @override
-	 * @see \Df\Framework\W\Result::__toString()
-	 * @used-by render()
-	 * @used-by \Df\Payment\W\Action::execute()
-	 * @return string
+	 * @see \Df\Framework\W\Result\Xml::attributes()
+	 * @used-by \Df\Framework\W\Result\Xml::__toString()
+	 * @return array(string => mixed)
 	 */
-	final function __toString() {return df_xml_g("{$this->_ev->t()}Response", [], [G::P__ATTRIBUTES => [
+	final protected function attributes() {return [
 		/**
 		 * 2017-10-03
 		 * In English:
@@ -164,52 +157,41 @@ class Result extends \Df\Framework\W\Result {
 		# «Store ID. Must match the `shopId` field in the request.»
 		# «Идентификатор магазина. Должен дублировать поле `shopId` запроса.»
 		,'shopId' => $this->_ev->r('shopId')
-		/**
-		 * 2017-10-03
-		 * «Additional text explanation of the merchant's response.
-		 * This is usually used for more detailed information about errors. Optional field.»
-		 * «Дополнительное текстовое пояснение ответа магазина.
-		 * Как правило, используется как дополнительная информация об ошибках. Необязательное поле.»
-		 * String(64)
-		 */
+		# 2017-10-03
+		# «Additional text explanation of the merchant's response.
+		# This is usually used for more detailed information about errors. Optional field.»
+		# «Дополнительное текстовое пояснение ответа магазина.
+		# Как правило, используется как дополнительная информация об ошибках. Необязательное поле.»
+		# String(64)
 		,'techMessage' => 'Author: Dmitry Fedyuk (https://mage2.pro, admin@mage2.pro)'
 	] + (!$this->_ex ? [] : [
 		# 2017-10-03
 		# «Text explanation if the payment is not accepted» / «Текстовое пояснение в случае отказа принять платеж»
 		# String(255)
 		'message' => df_chop($this->_ex->message(), 255)
-	])]);}
+	]);}
 
 	/**
-	 * 2017-10-02
+	 * 2021-12-03
 	 * @override
-	 * @see \Magento\Framework\Controller\AbstractResult::render()
-	 * https://github.com/magento/magento2/blob/2.1.0/lib/internal/Magento/Framework/Controller/AbstractResult.php#L109-L113
-	 * @param IHttpResponse|HttpResponse $r
+	 * @see \Df\Framework\W\Result\Xml::tag()
+	 * @used-by \Df\Framework\W\Result\Xml::__toString()
+	 * @return string
 	 */
-	final protected function render(IHttpResponse $r) {
-		$r->setBody($this->__toString());
-		/**
-		 * 2017-10-02
-		 * In English: «MIME type: application/xml».
-		 * https://tech.yandex.com/money/doc/payment-solution/payment-notifications/payment-notifications-http-docpage/
-		 * In Russian: «MIME-тип: application/xml».
-		 * https://tech.yandex.ru/money/doc/payment-solution/payment-notifications/payment-notifications-http-docpage/
-		 */
-		df_response_content_type('application/xml', $r);
-	}
+	final protected function tag() {return "{$this->_ev->t()}Response";}
 
 	/**
 	 * 2017-10-02
-	 * @used-by __toString()
+	 * @used-by attributes()
 	 * @used-by i()
+	 * @used-by tag()
 	 * @var Ev
 	 */
 	private $_ev;
 
 	/**
 	 * 2017-10-02
-	 * @used-by __toString()
+	 * @used-by attributes()
 	 * @used-by i()
 	 * @var Ex|null
 	 */
