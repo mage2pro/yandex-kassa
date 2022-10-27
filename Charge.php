@@ -318,7 +318,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * 2017-09-26
 	 * [Yandex.Kassa] Is it allowed to pass some loan parameters (e.g. «goods_name_N»)
 	 * to money.yandex.ru/eshop.xml without passing «category_code_N»? https://mage2.pro/t/4565
-	 * @used-by pCharge()
+	 * @used-by self::pCharge()
 	 * @return array(string => mixed)
 	 */
 	private function pLoan() {return
@@ -356,7 +356,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * «Parameters for creating a receipt» / «Параметры для формирования чека»
 	 * https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-receipt-docpage
 	 * https://tech.yandex.ru/money/doc/payment-solution/payment-form/payment-form-receipt-docpage
-	 * @used-by pCharge()
+	 * @used-by self::pCharge()
 	 * @return array(string => mixed)
 	 */
 	private function pTax() {return [
@@ -381,7 +381,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 
 	/**
 	 * 2017-09-30
-	 * @used-by pTax()
+	 * @used-by self::pTax()
 	 * @return array(string => mixed)
 	 */
 	private function pTaxLeafs() {
@@ -427,7 +427,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 
 	/**
 	 * 2017-09-30
-	 * @used-by pTaxLeafs()
+	 * @used-by self::pTaxLeafs()
 	 * @param string $name
 	 * @param float $amount  It should be without tax!
 	 * @param float $taxPercent

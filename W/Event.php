@@ -139,7 +139,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * 2017-10-03
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::isSuccessful()
-	 * @used-by ttCurrent()
+	 * @used-by self::ttCurrent()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
 	 * @return bool
 	 */

@@ -182,17 +182,17 @@ class Result extends \Df\Framework\W\Result\Xml {
 
 	/**
 	 * 2017-10-02
-	 * @used-by attributes()
-	 * @used-by i()
-	 * @used-by tag()
+	 * @used-by self::attributes()
+	 * @used-by self::i()
+	 * @used-by self::tag()
 	 * @var Ev
 	 */
 	private $_ev;
 
 	/**
 	 * 2017-10-02
-	 * @used-by attributes()
-	 * @used-by i()
+	 * @used-by self::attributes()
+	 * @used-by self::i()
 	 * @var Ex|null
 	 */
 	private $_ex;
