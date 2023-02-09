@@ -378,7 +378,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by self::pTax()
 	 * @return array(string => mixed)
 	 */
-	private function pTaxLeafs() {
+	private function pTaxLeafs():array {
 		$o = $this->o(); /** @var O $o */
 		/** @var array(string => mixed) $r */
 		$r = array_merge(
