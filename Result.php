@@ -200,7 +200,6 @@ class Result extends \Df\Framework\W\Result\Xml {
 	 * 2017-10-02
 	 * @used-by \Dfe\YandexKassa\W\Responder::error()
 	 * @used-by \Dfe\YandexKassa\W\Responder::success()
-	 * @param Ex|null $ex [optional]
 	 * @return self
 	 */
 	final static function i(Ev $ev, Ex $ex = null) {
