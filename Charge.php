@@ -25,9 +25,8 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Amount()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_Amount() {return 'sum';}
+	protected function k_Amount():string {return 'sum';}
 
 	/**
 	 * 2017-09-16
@@ -41,9 +40,8 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Email()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_Email() {return 'cps_email';}
+	protected function k_Email():string {return 'cps_email';}
 
 	/**
 	 * 2017-09-16
@@ -53,9 +51,8 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_MerchantId()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_MerchantId() {return 'shopId';}
+	protected function k_MerchantId():string {return 'shopId';}
 
 	/**
 	 * 2017-09-16
@@ -73,21 +70,18 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_RequestId()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_RequestId() {return 'orderNumber';}
+	protected function k_RequestId():string {return 'orderNumber';}
 
 	/**
 	 * 2017-09-25
 	 * The Yandex.Kassa charge requests do not use a signature:
-	 * @see \Dfe\YandexKassa\Charge::k_Signature()
 	 * https://tech.yandex.com/money/doc/payment-solution/payment-form/payment-form-http-docpage
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Signature()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return null
 	 */
-	protected function k_Signature() {return null;}
+	protected function k_Signature():string {return '';}
 
 	/**
 	 * 2017-09-16
@@ -96,7 +90,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by \Df\PaypalClone\Charge::p()
 	 * @return array(string => mixed)
 	 */
-	protected function pCharge() {$s = $this->s(); $o = $this->m()->option(); return [
+	protected function pCharge():array {$s = $this->s(); $o = $this->m()->option(); return [
 		/**
 		 * 2017-09-16
 		 * Note 1.

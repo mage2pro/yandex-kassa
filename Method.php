@@ -15,10 +15,8 @@ final class Method extends \Df\PaypalClone\Method {
 	 * @override
 	 * @see \Df\Payment\Method::amountFormat()
 	 * @used-by \Df\Payment\Operation::amountFormat()
-	 * @param float|int $a
-	 * @return string
 	 */
-	function amountFormat($a) {return dff_2($a);}
+	function amountFormat(float $a):string {return dff_2($a);}
 
 	/**
 	 * 2017-09-24
@@ -45,7 +43,7 @@ final class Method extends \Df\PaypalClone\Method {
 	 * @used-by \Df\Payment\Method::assignData()
 	 * @return string[]
 	 */
-	protected function iiaKeys() {return [self::$II_OPTION];}
+	protected function iiaKeys():array {return [self::$II_OPTION];}
 
 	/**
 	 * 2017-09-24 https://github.com/mage2pro/core/blob/2.12.17/Payment/view/frontend/web/withOptions.js#L56-L72

@@ -141,9 +141,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @see \Df\PaypalClone\W\Event::isSuccessful()
 	 * @used-by self::ttCurrent()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
-	 * @return bool
 	 */
-	function isSuccessful() {return 'cancelOrder' !== $this->status();}
+	function isSuccessful():bool {return 'cancelOrder' !== $this->status();}
 
 	/**
 	 * 2017-09-14 The type of the current transaction.
@@ -157,7 +156,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Df\PaypalClone\W\Nav::id()
 	 * @used-by \Dfe\Qiwi\W\Handler::strategyC()
 	 */
-	function ttCurrent() {return !$this->isSuccessful() ? parent::ttCurrent() : dfa([
+	function ttCurrent():string {return !$this->isSuccessful() ? parent::ttCurrent() : dfa_strict([
 		'checkOrder' => self::T_INFO, 'paymentAviso' => self::T_CAPTURE
 	], $this->status());}
 
@@ -168,9 +167,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_idE()
 	 * @used-by \Df\PaypalClone\W\Event::idE()
-	 * @return string
 	 */
-	protected function k_idE() {return 'invoiceId';}
+	protected function k_idE():string {return 'invoiceId';}
 
 	/**
 	 * 2017-09-25 «The order number in the merchant's system» / «Номер заказа в системе магазина»
@@ -178,9 +176,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\Payment\W\Event::k_pid()
 	 * @used-by \Df\Payment\W\Event::pid()
-	 * @return string
 	 */
-	protected function k_pid() {return 'orderNumber';}
+	protected function k_pid():string {return 'orderNumber';}
 
 	/**
 	 * 2017-09-25 «MD5 hash of the payment form parameters» / «MD5-хэш параметров платежной формы»
@@ -188,16 +185,14 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_signature()
 	 * @used-by \Df\PaypalClone\W\Event::signatureProvided()
-	 * @return string
 	 */
-	protected function k_signature() {return 'md5';}
+	protected function k_signature():string {return 'md5';}
 
 	/**
 	 * 2017-10-03
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_status()
 	 * @used-by \Df\PaypalClone\W\Event::status()
-	 * @return string|null
 	 */
-	protected function k_status() {return 'action';}
+	protected function k_status():string {return 'action';}
 }

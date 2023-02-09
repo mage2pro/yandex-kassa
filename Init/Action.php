@@ -29,7 +29,6 @@ final class Action extends \Df\PaypalClone\Init\Action {
 	 * @override
 	 * @see \Df\Payment\Init\Action::redirectUrl()
 	 * @used-by \Df\Payment\Init\Action::action()
-	 * @return string
 	 */
-	protected function redirectUrl() {return 'https://{stage}money.yandex.ru/eshop.xml';}
+	protected function redirectUrl():string {return 'https://{stage}money.yandex.ru/eshop.xml';}
 }

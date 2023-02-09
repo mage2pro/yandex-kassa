@@ -5,8 +5,7 @@ final class Url extends \Df\Payment\Url {
 	/**
 	 * 2017-09-16
 	 * Note 1.
-	 * The method returns a 2-tuple:
-	 * the first element is for the test mode, the second is for the production mode.
+	 * The method returns a 2-tuple: the first element is for the test mode, the second is for the production mode.
 	 * Note 2.
 	 * 2.1. In English:
 	 * 2.1.1. The production mode:
@@ -34,5 +33,5 @@ final class Url extends \Df\Payment\Url {
 	 * @used-by \Df\Payment\Url::url()
 	 * @return string[]
 	 */
-	protected function stageNames() {return ['demo', ''];}
+	protected function stageNames():array {return ['demo', ''];}
 }

@@ -57,7 +57,7 @@ class Result extends \Df\Framework\W\Result\Xml {
 	 * @used-by \Df\Framework\W\Result\Xml::__toString()
 	 * @return array(string => mixed)
 	 */
-	final protected function attributes() {return [
+	final protected function attributes():array {return [
 		/**
 		 * 2017-10-03
 		 * In English:
@@ -163,7 +163,7 @@ class Result extends \Df\Framework\W\Result\Xml {
 		# «Дополнительное текстовое пояснение ответа магазина.
 		# Как правило, используется как дополнительная информация об ошибках. Необязательное поле.»
 		# String(64)
-		,'techMessage' => 'Author: Dmitry Fedyuk (https://mage2.pro, admin@mage2.pro)'
+		,'techMessage' => 'Author: Dmitrii Fediuk (https://mage2.pro, admin@mage2.pro)'
 	] + (!$this->_ex ? [] : [
 		# 2017-10-03
 		# «Text explanation if the payment is not accepted» / «Текстовое пояснение в случае отказа принять платеж»
@@ -176,9 +176,8 @@ class Result extends \Df\Framework\W\Result\Xml {
 	 * @override
 	 * @see \Df\Framework\W\Result\Xml::tag()
 	 * @used-by \Df\Framework\W\Result\Xml::__toString()
-	 * @return string
 	 */
-	final protected function tag() {return "{$this->_ev->t()}Response";}
+	final protected function tag():string {return "{$this->_ev->t()}Response";}
 
 	/**
 	 * 2017-10-02
