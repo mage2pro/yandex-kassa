@@ -8,9 +8,8 @@ final class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-09-17
 	 * @used-by \Dfe\YandexKassa\ConfigProvider::options()
-	 * @return O
 	 */
-	function options() {return $this->_options(OptionSource::class);}
+	function options():O {return $this->_options(OptionSource::class);}
 
 	/**
 	 * 2017-09-16 «scid».
