@@ -29,7 +29,6 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * @see \Df\Payment\W\Responder::success()
 	 * @used-by self::notForUs()
 	 * @used-by \Df\Payment\W\Responder::get()
-	 * @return Result
 	 */
-	protected function success() {return Result::i($this->e());}
+	protected function success():Result {return Result::i($this->e());}
 }
