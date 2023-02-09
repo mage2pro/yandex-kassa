@@ -21,9 +21,8 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * @see \Df\Payment\W\Responder::notForUs()
 	 * @used-by \Df\Payment\W\Responder::setNotForUs()
 	 * @param string|null $message [optional]
-	 * @return Result
 	 */
-	protected function notForUs($message = null) {return $this->success();}
+	protected function notForUs($message = null):Result {return $this->success();}
 
 	/**
 	 * 2017-10-02
