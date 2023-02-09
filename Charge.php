@@ -494,7 +494,6 @@ final class Charge extends \Df\PaypalClone\Charge {
 			: (dff_eq($t, 10) ? 3 : (dff_eq($t, 18) ? 4 : df_error(
 				'An illegal tax rate (%1) is applied to the «%2» order item.', dff_2i($t), $name)
 			))
-		# 2017-09-29 «Product name» / «Название товара». Required, string(128).
-		,'text' => df_chop($name, 128)
+		,'text' => df_chop($name, 128) # 2017-09-29 «Product name» / «Название товара». Required, string(128).
 	];}
 }
