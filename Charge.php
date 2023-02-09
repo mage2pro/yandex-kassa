@@ -422,13 +422,12 @@ final class Charge extends \Df\PaypalClone\Charge {
 	/**
 	 * 2017-09-30
 	 * @used-by self::pTaxLeafs()
-	 * @param string $name
 	 * @param float $amount  It should be without tax!
 	 * @param float $taxPercent
 	 * @param int $qty [optional]
 	 * @return array(string => mixed)
 	 */
-	private function pTaxLeaf($name, $amount, $taxPercent, $qty = 1) {return [
+	private function pTaxLeaf(string $name, $amount, $taxPercent, $qty = 1) {return [
 		# 2017-09-25 «Product price» / «Цена товара». Requrired, Object.
 		'price' => [
 			/**
