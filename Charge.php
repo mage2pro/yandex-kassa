@@ -353,7 +353,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by self::pCharge()
 	 * @return array(string => mixed)
 	 */
-	private function pTax() {return [
+	private function pTax():array {return [
 		/**
 		 * 2017-09-25
 		 * «Buyer's phone number or email address.
