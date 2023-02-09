@@ -315,7 +315,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by self::pCharge()
 	 * @return array(string => mixed)
 	 */
-	private function pLoan() {return
+	private function pLoan():array {return
 		dfa_flatten(df_map_k(
 			function($i, array $a) {return dfak_transform($a, function($k) use($i) {return "{$k}_{$i}";});}
 			,$this->oiLeafs(function(OI $i) {return [
