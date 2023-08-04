@@ -1,10 +1,9 @@
 <?php
 namespace Dfe\YandexKassa;
-use \Exception as Ex;
 use Df\PaypalClone\W\Exception\InvalidSignature;
 use Dfe\YandexKassa\W\Event as Ev;
 use Zend_Date as ZD;
-
+use \Throwable as Th; # 2023-08-03 "Treat `\Throwable` similar to `\Exception`": https://github.com/mage2pro/core/issues/311
 /**
  * 2017-10-02
  * 1. In English:
@@ -93,7 +92,7 @@ class Result extends \Df\Framework\W\Result\Xml {
 		 * Ошибка разбора запроса
 		 * Магазин не в состоянии разобрать запрос. Окончательная ошибка.
 		 */
-		'code' => !$this->_ex ? 0 : ($this->_ex instanceof InvalidSignature ? 1 : 200)
+		'code' => !$this->_th ? 0 : ($this->_th instanceof InvalidSignature ? 1 : 200)
 		# 2017-10-03
 		# «Yandex.Checkout transaction ID. Must match the invoiceId field in the request.»
 		# «Идентификатор транзакции в Яндекс.Кассе. Должен дублировать поле invoiceId запроса.»
@@ -164,11 +163,11 @@ class Result extends \Df\Framework\W\Result\Xml {
 		# Как правило, используется как дополнительная информация об ошибках. Необязательное поле.»
 		# String(64)
 		,'techMessage' => 'Author: Dmitrii Fediuk (https://mage2.pro, admin@mage2.pro)'
-	] + (!$this->_ex ? [] : [
+	] + (!$this->_th ? [] : [
 		# 2017-10-03
 		# «Text explanation if the payment is not accepted» / «Текстовое пояснение в случае отказа принять платеж»
 		# String(255)
-		'message' => df_chop($this->_ex->message(), 255)
+		'message' => df_chop(df_xts($this->_th), 255)
 	]);}
 
 	/**
@@ -192,16 +191,16 @@ class Result extends \Df\Framework\W\Result\Xml {
 	 * 2017-10-02
 	 * @used-by self::attributes()
 	 * @used-by self::i()
-	 * @var Ex|null
+	 * @var Th|null
 	 */
-	private $_ex;
+	private $_th;
 
 	/**
 	 * 2017-10-02
 	 * @used-by \Dfe\YandexKassa\W\Responder::error()
 	 * @used-by \Dfe\YandexKassa\W\Responder::success()
 	 */
-	final static function i(Ev $ev, Ex $ex = null):self {
-		/** @var self $i */ $i = new self; $i->_ev = $ev; $i->_ex = $ex; return $i;
+	final static function i(Ev $ev, Th $th = null):self {
+		/** @var self $i */ $i = new self; $i->_ev = $ev; $i->_th = $th; return $i;
 	}
 }

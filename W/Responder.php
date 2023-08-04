@@ -8,12 +8,13 @@ use Dfe\YandexKassa\Result;
 final class Responder extends \Df\Payment\W\Responder {
 	/**
 	 * 2017-10-02
+	 * 2023-08-03 "Treat `\Throwable` similar to `\Exception`": https://github.com/mage2pro/core/issues/311
 	 * @override
 	 * @see \Df\Payment\W\Responder::error()
 	 * @used-by \Df\Payment\W\Responder::setError()
-	 * @param \Exception|string $e
+	 * @param \Throwable|string $t
 	 */
-	protected function error($e):Result {df_assert($e instanceof \Exception); return Result::i($this->e(), $e);}
+	protected function error($t):Result {df_assert(df_is_th($t)); return Result::i($this->e(), $t);}
 
 	/**
 	 * 2017-10-02
