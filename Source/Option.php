@@ -33,7 +33,7 @@ final class Option extends \Df\Config\Source {
 	 * @used-by \Df\Config\Source::toOptionArray()
 	 * @return array(string => string)
 	 */
-	protected function map():array {return df_sort_names(df_map(
+	protected function map():array {return df_sort_l(df_map(
 		function(array $a):string {return dfa_deep($a, 'title/' . df_lang_ru_en());}
 		,array_filter(df_module_json($this, 'options'), function(array $a):bool {return !df_bool(
 			dfa($a, 'hideOnCheckout')
